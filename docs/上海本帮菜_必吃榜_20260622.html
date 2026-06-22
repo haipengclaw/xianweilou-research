@@ -45,11 +45,11 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .kw-tag{background:#fef3f2;color:#c0392b;padding:4px 10px;border-radius:14px;font-size:12px;border:1px solid #fdd;white-space:nowrap}
 .kw-tag .cnt{color:#e74c3c;font-weight:700;margin-left:3px}
 .footer{text-align:center;padding:20px;color:#999;font-size:12px}
-@media(max-width:768px){.dish-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.dish-grid{grid-template-columns:repeat(3,1fr)}.shop-banner h2{font-size:15px}.score-grid{gap:6px;padding:8px 12px}.score-item .val{font-size:14px}.section{padding:10px 14px}.dish-card .dish-name{font-size:11px}}@media print{body{background:#fff;padding:0}.shop-card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.header{background:#c0392b!important;-webkit-print-color-adjust:exact}.select-btn,.select-hint,.btn-print{display:none!important}}
 </style>
 <script>
 // Selection system - add/remove dishes to research list
-function toggleDish(btn, dishName, shopName) {
+function toggleDish(btn, dishName, shopName, imgUrl) {
   const list = JSON.parse(localStorage.getItem('researchList') || '[]');
   const key = shopName + '::' + dishName;
   const idx = list.findIndex(item => item.shop + '::' + item.dish === key);

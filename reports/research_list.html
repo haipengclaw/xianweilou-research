@@ -12,15 +12,16 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 .header h1 { font-size: 24px; }
 .header .sub { font-size: 13px; opacity: .85; margin-top: 6px; }
 .header .back { display: inline-block; margin-top: 10px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; }
+.header .print-btn { display: inline-block; margin-top: 10px; margin-left: 8px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; cursor: pointer; border: none; }
 .shop-group { background: #fff; border-radius: 12px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
 .shop-group h3 { padding: 14px 18px; background: #fafafa; font-size: 15px; border-bottom: 1px solid #eee; display:flex;align-items:center;gap:8px; }
-.shop-group h3 img { width:32px;height:32px;border-radius:6px;object-fit:cover; }
 .dish-item { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-bottom: 1px solid #f5f5f5; font-size: 14px; }
 .dish-item:last-child { border-bottom: none; }
 .dish-item .num { color: #999; font-size: 12px; min-width: 24px; }
+.dish-item .dish-img { width: 48px; height: 32px; border-radius: 4px; object-fit: cover; background: #f0f0f0; flex-shrink: 0; }
 .dish-item .name { font-weight: 600; }
-.dish-item .remove { margin-left: auto; cursor: pointer; color: #e74c3c; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fdd; background: #fff5f5; }
-.dish-item .remove:hover { background: #ffe0e0; }
+.dish-item .shop-name { color: #888; font-size: 12px; margin-left: 4px; }
+.dish-item .remove { margin-left: auto; cursor: pointer; color: #e74c3c; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fdd; background: #fff5f5; flex-shrink: 0; }
 .empty { text-align: center; padding: 60px 20px; color: #bbb; }
 .empty .icon { font-size: 48px; margin-bottom: 10px; }
 .actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
@@ -31,6 +32,26 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 .btn-secondary:hover { background: #f5f5f5; }
 .count-badge { background: #c0392b; color: #fff; padding: 1px 10px; border-radius: 12px; font-size: 12px; margin-left: 6px; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  .header { padding: 24px 16px; }
+  .header h1 { font-size: 20px; }
+  .dish-item { padding: 8px 12px; font-size: 13px; flex-wrap: wrap; }
+  .dish-item .dish-img { width: 40px; height: 27px; }
+  .actions { gap: 6px; }
+  .btn { padding: 8px 16px; font-size: 13px; }
+}
+
+/* Print style */
+@media print {
+  body { background: #fff; padding: 0; }
+  .header { background: #c0392b !important; -webkit-print-color-adjust: exact; padding: 20px; }
+  .actions, .remove, .back, .print-btn { display: none !important; }
+  .shop-group { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+  .dish-item { break-inside: avoid; }
+}
 </style>
 </head>
 <body>
@@ -38,7 +59,8 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 <div class="header">
 <h1>📋 菜品研究方向清单</h1>
 <div class="sub" id="subtitle">加载中...</div>
-<a class="back" href="index.html">← 返回数据库首页</a>
+<a class="back" href="index.html">← 返回首页</a>
+<button class="print-btn" onclick="window.print()">🖨️ 导出PDF</button>
 </div>
 
 <div id="content"></div>
@@ -63,7 +85,7 @@ function render() {
   const content = document.getElementById('content');
   const subtitle = document.getElementById('subtitle');
 
-  subtitle.textContent = `共 ${list.length} 道菜品 · 可导出带图HTML报告或文字清单`;
+  subtitle.textContent = `共 ${list.length} 道菜品 · 点击 🖨️ 导出PDF`;
 
   if (list.length === 0) {
     content.innerHTML = '<div class="empty"><div class="icon">📭</div><p>研究清单还是空的</p><p style="font-size:13px;margin-top:6px;color:#999">去各分类报告页面点击菜品上的 <span style="color:#f5a623">☆</span> 收藏吧</p></div>';
@@ -72,26 +94,30 @@ function render() {
 
   const grouped = {};
   list.forEach(item => {
-    if (!grouped[item.shop]) grouped[item.shop] = [];
-    grouped[item.shop].push(item.dish);
+    const key = item.shop;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(item);
   });
 
   let html = '<div class="actions">';
-  html += '<button class="btn btn-primary" onclick="exportHTML()">📄 导出带图报告</button>';
-  html += '<button class="btn btn-secondary" onclick="exportText()">📝 导出文字清单</button>';
+  html += '<button class="btn btn-primary" onclick="window.print()">🖨️ 导出PDF</button>';
+  html += '<button class="btn btn-secondary" onclick="exportText()">📝 复制文字清单</button>';
   html += '<button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空全部</button>';
   html += '</div>';
 
   let num = 1;
   Object.entries(grouped).forEach(([shop, dishes]) => {
     html += `<div class="shop-group"><h3>🏪 ${shop} <span class="count-badge">${dishes.length}道</span></h3>`;
-    dishes.forEach(dish => {
+    dishes.forEach(item => {
+      const imgHtml = item.img ? `<img class="dish-img" src="${item.img}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dish-img" style="background:#eee;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:16px">🍽️</div>';
       const shopSafe = shop.replace(/'/g, "\\'");
-      const dishSafe = dish.replace(/'/g, "\\'");
+      const dishSafe = item.dish.replace(/'/g, "\\'");
       html += `<div class="dish-item">
         <span class="num">${num}.</span>
-        <span class="name">${dish}</span>
-        <span class="remove" onclick="removeDish('${shopSafe}','${dishSafe}')">移除</span>
+        ${imgHtml}
+        <span class="name">${item.dish}</span>
+        <span class="shop-name">${shop}</span>
+        <span class="remove" onclick="removeDish('${shopSafe}','${dishSafe}')">✕</span>
       </div>`;
       num++;
     });
@@ -126,58 +152,8 @@ function exportText() {
   });
   text += '---\n仙味楼 R&D 助手\n';
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => alert('✅ 文字清单已复制！')).catch(() => prompt('复制以下内容：', text));
+    navigator.clipboard.writeText(text).then(() => alert('✅ 已复制！')).catch(() => prompt('复制以下内容：', text));
   } else { prompt('复制以下内容：', text); }
-}
-
-function exportHTML() {
-  const list = loadList();
-  if (list.length === 0) { alert('清单为空'); return; }
-
-  // Group by shop
-  const grouped = {};
-  list.forEach(item => {
-    if (!grouped[item.shop]) grouped[item.shop] = [];
-    grouped[item.shop].push(item.dish);
-  });
-
-  // Build HTML export
-  let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究方向清单</title>
-<style>
-body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background:#f5f5f5;color:#333;padding:20px;max-width:800px;margin:0 auto}
-h1{color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:10px}
-.shop{margin:20px 0;background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.shop h2{font-size:16px;margin-bottom:10px;color:#333}
-.dish{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #f0f0f0}
-.dish:last-child{border-bottom:none}
-.dish .num{color:#999;min-width:24px}
-.dish .name{font-weight:600}
-.footer{margin-top:30px;text-align:center;color:#999;font-size:12px}
-</style></head><body>
-<h1>🍜 仙味楼 · 菜品研究方向清单</h1>
-<p style="color:#888;font-size:13px">生成日期：${new Date().toLocaleDateString('zh-CN')} · 共 ${list.length} 道菜品</p>`;
-
-  let num = 1;
-  Object.entries(grouped).forEach(([shop, dishes]) => {
-    html += `<div class="shop"><h2>🏪 ${shop}</h2>`;
-    dishes.forEach(dish => {
-      html += `<div class="dish"><span class="num">${num}.</span><span class="name">${dish}</span></div>`;
-      num++;
-    });
-    html += '</div>';
-  });
-
-  html += `<div class="footer"><p>仙味楼 R&D 助手 · 数据来源：大众点评</p></div></body></html>`;
-
-  // Open in new window
-  const win = window.open('', '_blank');
-  if (win) {
-    win.document.write(html);
-    win.document.close();
-    win.focus();
-  } else {
-    alert('请允许弹出窗口，或使用文字导出');
-  }
 }
 
 render();
