@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海本帮菜米其林餐厅研究报告</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; }
+.header { background: linear-gradient(135deg, #c0392b, #e74c3c); color: #fff; padding: 40px 20px; text-align: center; }
+.header h1 { font-size: 28px; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.nav-bar { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.nav-bar h3 { margin-bottom: 10px; color: #c0392b; font-size: 14px; }
+.nav-bar a { display: inline-block; margin: 3px 6px 3px 0; padding: 4px 10px; background: #fef0ef; color: #c0392b; border-radius: 4px; text-decoration: none; font-size: 12px; }
+.nav-bar a:hover { background: #c0392b; color: #fff; }
+.shop-card { background: #fff; border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.shop-header { padding: 20px; border-bottom: 1px solid #eee; }
+.shop-header h2 { font-size: 20px; margin-bottom: 4px; }
+.shop-header .sub { font-size: 13px; color: #888; }
+.shop-body { display: flex; flex-wrap: wrap; }
+.shop-info { width: 100%; padding: 16px 20px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.info-item { background: #fafafa; padding: 8px 12px; border-radius: 8px; font-size: 13px; }
+.info-item .label { color: #999; font-size: 11px; }
+.info-item .value { font-weight: 600; color: #333; }
+.dish-section, .review-section { padding: 0 20px 16px; }
+.dish-section h3, .review-section h3 { font-size: 15px; color: #c0392b; margin-bottom: 10px; border-left: 3px solid #c0392b; padding-left: 10px; }
+.dish-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.dish-tag { background: #fff5f5; color: #c0392b; padding: 4px 12px; border-radius: 16px; font-size: 13px; border: 1px solid #fdd; }
+.dish-hot { background: #c0392b; color: #fff; }
+.dish-count { font-size: 11px; color: #999; margin-left: 4px; }
+.image-row { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; }
+.image-row img { height: 160px; border-radius: 8px; flex-shrink: 0; object-fit: cover; cursor: pointer; transition: transform 0.2s; }
+.image-row img:hover { transform: scale(1.05); }
+.keyword-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.keyword-tag { background: #eef4ff; color: #406599; padding: 3px 10px; border-radius: 12px; font-size: 12px; }
+.review-box { background: #fafafa; border-radius: 8px; padding: 12px; margin-top: 10px; }
+.review-box .user { font-weight: 600; font-size: 13px; color: #333; }
+.review-box .meta { font-size: 11px; color: #999; margin: 2px 0 6px; }
+.review-box .text { font-size: 13px; line-height: 1.6; color: #555; }
+.award-badge { display: inline-block; background: #c0392b; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin-left: 8px; }
+.stars { color: #f5a623; }
+.price-range { font-weight: 700; color: #c0392b; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+@media (max-width: 768px) { .info-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🍜 上海本帮菜米其林餐厅研究报告</h1>
+<p>数据来源：大众点评 · 采集日期：2026-06-22 · 共 23 家餐厅</p>
+</div>
+<div class="container">
+<div class="nav-bar">
+<h3>📋 餐厅目录</h3>
+<a href="#shop-0">顶特勒粥面馆(淮海路店)</a>
+<a href="#shop-1">复兴面王·酒菜面饭&手作小笼包(外滩福州路店)</a>
+<a href="#shop-2">龚禧龚禧·甬菜(汤臣洲际店)</a>
+<a href="#shop-3">广富林宰相府酒店·鹿鸣阁</a>
+<a href="#shop-4">豪生酒家</a>
+<a href="#shop-5">蘭心餐厅(进贤路店)</a>
+<a href="#shop-6">老兴鲜(黄浦店)</a>
+<a href="#shop-7">老正兴菜馆(福州路店)</a>
+<a href="#shop-8">龙吟山房(苏河湾万象天地店)</a>
+<a href="#shop-9">龙悦舫(丽园路店)</a>
+<a href="#shop-10">鹿园 MOOSE(浦东店)</a>
+<a href="#shop-11">茂隆餐厅(进贤路店)</a>
+<a href="#shop-12">外滩家宴·上海本帮菜(罗斯福公馆店)</a>
+<a href="#shop-13">西郊5号·Maggie 5</a>
+<a href="#shop-14">新荣记(南京西路店)</a>
+<a href="#shop-15">新荣记(前滩店)</a>
+<a href="#shop-16">叶马(环贸iapm店)</a>
+<a href="#shop-17">逸采EASEFUL CUISINE(普陀店)</a>
+<a href="#shop-18">逸谷会(静安嘉里中心店)</a>
+<a href="#shop-19">雍福会(永福路店)</a>
+<a href="#shop-20">雍颐庭</a>
+<a href="#shop-21">越稽·地道绍兴菜馆(爱琴海缤纷里店)</a>
+<a href="#shop-22">周舍·海派菜(虹桥店)</a>
+</div>
+
+<div class="shop-card" id="shop-0">
+<div class="shop-header">
+<h2>顶特勒粥面馆(淮海路店)</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#e74c3c">3.61189</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥47</span>
+<span style="margin:0 8px">|</span>
+<span>面馆</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#e74c3c">3.61189</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥47</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">1</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#e74c3c">3.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#e74c3c">3.7</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#e74c3c">3.5</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">淮海中路494弄22号工商银行旁距地铁14号线一大会址</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">14号线一大会址·黄陂南路站7口步行460m</div></div>
+
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">招牌大黄鱼面</span><span class="dish-tag dish-hot">黄鱼煨面</span><span class="dish-tag dish-hot">炸猪排</span><span class="dish-tag dish-hot">葱油拌面</span><span class="dish-tag dish-hot">红烧肉面</span><span class="dish-tag">雪菜黄鱼面</span><span class="dish-tag">牛腩面</span><span class="dish-tag">辣肉面</span><span class="dish-tag">大排面</span><span class="dish-tag">小笼包</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/merchant/65cc8eed06381dae449ea78c41734d7e115939.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/c94bd2fc613372c396044ef789b78b01247353.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/deal/ecec87dfad73dc143100a84ec9b939f7140783.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/coverpic/76dd75652f0608c4c74adb14f7fc8cc4232889.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://www.dpfile.com/picasso/images/88d74f66402fb33274cd1e6fc27a51cb.png" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/r_TLuES7kSFPG6cXuvbRdZeaPN025nDv2X7q9Dy2GsgIQwvNhY_1pZsrYHS78dAL2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/Hn3RMB0IImhvmiTDfgiRHrGGMINhz3WEtYO7IGRC-QMqtmE3pPie4P-l9Cy6eAvz2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/_ve6wmS48_Bnvi507dzyF1R6p7HPzmyp-ORKcGHBvxa78AwJ5FdcB0_MCHaehpCy2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">停车建议 (20)</span><span class="keyword-tag">必点菜品 (208)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-1">
+<div class="shop-header">
+<h2>复兴面王·酒菜面饭&手作小笼包(外滩福州路店)</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#e74c3c">3.91445</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥42</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#e74c3c">3.91445</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥42</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">1</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#e74c3c">3.9</div></div>
+
+<div class="info-item"><div class="label">地铁</div><div class="value">南京东路站4口(左)步行320m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">08:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">现炒浇头面</span><span class="dish-tag dish-hot">手作小笼包</span><span class="dish-tag dish-hot">葱油拌面</span><span class="dish-tag dish-hot">炸猪排</span><span class="dish-tag dish-hot">红烧肉面</span><span class="dish-tag">黄鱼面</span><span class="dish-tag">辣肉面</span><span class="dish-tag">大排面</span><span class="dish-tag">雪菜肉丝面</span><span class="dish-tag">酸辣汤</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/69ed7012b896a4dc528421232c1b240e308169.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/fb81bba4176f934133e01b10869f52ce309348.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/3xkXP7Rl3b6KXr_7lVgXwp6sfD_8v90Y9lLOqbzbA3iljNf1AB4I_8vjr-xhXoSa2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/g9hqZrvGlrMR3wWVewxaWm_9um09hiBSwQPn-m_veVe3NO8cE0pjX6IgXllmzv722kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/-hPabBHul8SUiN18kRvMSaUzBY6g_M9KySH5L3-FQbwqaA6zQuJPCnyuvdc5gcHB2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/P_NHcuCJHR2f6byisIZ57XlZQ3ORAKxaHGgGrM-rZjTWWorxwc86XguHgZFYV6Ul2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/KJytFXU1LZDP1MHN_80mfvEgXJ8lQpc69VA0Rxmfg2yq7O0KJucHIQ31VOr2IUz62kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/h9E69PG1vqyW-ErvMtFLP9QLirBGatBm1-xa3TIpPVrWWorxwc86XguHgZFYV6Ul2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="review-section"><h3>⭐ 用户评价</h3>
+<div class="review-box">
+<div class="user">SuperWANG</div>
+<div class="meta">6天前 · 不错 </div>
+<div class="text">藏在福州路的复兴面王，除了招牌面，两款点心直接挖到宝！红枣馒头暄软得像揣了团云，红枣甜香完全渗进麦香肌理，咬开没有干硬面芯，越嚼越润。抹茶糕清润不腻，茶味鲜爽不发苦，松绵的口感带着微甘余韵，完全不是甜齁的廉价点心质感。逛南京路拐个弯就能打卡，路过顺手捎两个，当垫肚小食太适配。</div>
+</div></div></div></div>
+
+<div class="shop-card" id="shop-2">
+<div class="shop-header">
+<h2>龚禧龚禧·甬菜(汤臣洲际店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.9185</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥398</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.9185</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥398</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">9</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">张杨路777号二楼距地铁世纪大道站12口步行610</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">世纪大道站12口步行610m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">家烧黄鱼</span><span class="dish-tag dish-hot">沙蒜烧豆面</span><span class="dish-tag dish-hot">鲳鱼烧年糕</span><span class="dish-tag dish-hot">蟹骨酱</span><span class="dish-tag dish-hot">葱油海瓜子</span><span class="dish-tag">蛏子烧豆面</span><span class="dish-tag">盐焗海螺</span><span class="dish-tag">白灼小章鱼</span><span class="dish-tag">雪菜炒目鱼</span><span class="dish-tag">带鱼焖饭</span><span class="dish-tag">蒜子烧河鳗</span><span class="dish-tag">酸汤肥牛</span><span class="dish-tag">椒盐皮皮虾</span><span class="dish-tag">姜葱炒蟹</span><span class="dish-tag">辣炒花蛤</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/deal/76219de4c39aaf3b8de274a0f60c8b59829958.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/content/e9b89aa3cdf55f0f6852788263c9c55f2205498.png%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/EftT7O8RGBRSyScHJfuJ0YqMG0AyOx6pbEfSBpQMYF-dIsWXuKniJSh7VbaMpj6k2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/BHB00baKYDL1-HDPyUcOdbeJk2VM6usKZgUaagMX6frSHaVqRm84djC5rZRSHRRn2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/hnT6SCjOFMOOTMYb4BhEQ_zEtNYj_UlG-tsBRCT-6UhOyKgBS9ckhcL9HT3x6VUI2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/mm_mHe94qcsMwuql3Z2wcMxiVk6H0iAGAbRemFez-yQQOxsCNv1fmS1A13pd78hB2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/v703TQnZrpqGJnzX5WN5JHJ-v6lF7CaItliia0PO7f8qLhHWEEj1ZsvoUxKzVez22kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/TbjAkkf4HrAYmH9xLeQes8qsUJlwRuBesPObWzo97e_SHaVqRm84djC5rZRSHRRn2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">新中式雅致环境 (71)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-3">
+<div class="shop-header">
+<h2>广富林宰相府酒店·鹿鸣阁</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.9203</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥366</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.9203</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥366</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">6</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">广富林路3260弄10号上海松江广富林宰相府酒店1</div></div>
+
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">松鼠桂鱼</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag">清蒸鲥鱼</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">酒香草头</span><span class="dish-tag">熏鱼</span><span class="dish-tag">八宝辣酱</span><span class="dish-tag">狮子头</span><span class="dish-tag">黄鱼馄饨</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">黑松露炒饭</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/deal/f352d4ecd8cea45653e5730258a70a38292460.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/deal/e1f65bd5a1204f1f1389f13a96ce5d49688695.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/m5jN0MwvCgPExhcFnopnzvZktAcxcV5jkTnC1Yw0nunYkYkfqZbM9z9rSKqYLN8D2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/IF_ZmEYGiObVpJsIrDIJjN3dKFxPduOMNDgbNz7YoXUNxJOrSRJnU5Gh-szEg62g2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/0UItnJbQFiiSP-OJJaHyufuo9PG5z49yCn5b2ak51ieUN_mFKJ5ylYSi1N2AYhRs2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/7J8BK7k8sh_d8WFCLi0go1WrpyudwyMLa14XJxrwj0lPmsdrgtcEfk101yfC0YUT2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/q6iY_rmjqNs0eEaGzbHFzahChTKHflpfjanxojgtxJnA-_EifdQ8n2GjY6-Yb5FP2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/aZNPMattquSRYeSk1P5dpTRHD48MAmemxCEXTeGJLLV0jeq5qnXAi1Ot6dtWTEjC2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">停车建议 (49)</span><span class="keyword-tag">蒸肉饼值得推荐 (16)</span><span class="keyword-tag">服务生读心级服务 (114)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-4">
+<div class="shop-header">
+<h2>豪生酒家</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#f39c12">4.39</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥175</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#f39c12">4.39</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥175</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">4</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#f39c12">4.2</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#f39c12">4.2</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#f39c12">4.3</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">广元路156号距地铁9号线徐家汇站16口步行690</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">9号线徐家汇站16口步行690m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">10:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag dish-hot">草头圈子</span><span class="dish-tag dish-hot">八宝辣酱</span><span class="dish-tag">蟹粉豆腐</span><span class="dish-tag">糖醋排骨</span><span class="dish-tag">熏鱼</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">清炒河虾仁</span><span class="dish-tag">酒香草头</span><span class="dish-tag">腌笃鲜</span><span class="dish-tag">生煎包</span><span class="dish-tag">八宝鸭</span><span class="dish-tag">黄鱼面</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://qcloud.dpfile.com/pc/rbhJEoPvDWIcb4A8LBhT5vSq2M8ZsxUG4ckwFe-zXdZhH3q7ql_my20U0m2o_V64tinsm4wZBU2JBzCyrLLxBw.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/PkqDf-dgOjnjObozIcDM9BukJzab715JooI6r8QYHQoPrr8NXiLPAXLCo3SwLrXZ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/pJI7I7YUS2Lmg6PBj9skZntEiMR2DbP-U8tPr45btHwQOxsCNv1fmS1A13pd78hB2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/X_XTrMZFV07_T0LcRZ-KYMXXLVBrwy0jj-3MKm21WV_YkYkfqZbM9z9rSKqYLN8D2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/mqysQ779_XiKP2DVaxZvV020tczbaUipLu6wlt0z49_avuU3ik-I4P9euqpPAei52kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/ngmrv5MxAiSZ4usg1Rb7TserrF8T-az58U9dS2Irj9SVdrM6M9CFi9PFQh-bNteE2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/20e509c07ccbde6fe143d6f832d7d2b6531885.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/ugcpic/2d90e32e73f5c5f708abb1d0e1d1ee0c1238270.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">停车建议 (13)</span><span class="keyword-tag">糟鸡很嫩招牌菜 (73)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-5">
+<div class="shop-header">
+<h2>蘭心餐厅(进贤路店)</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#e74c3c">3.71159</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥91</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#e74c3c">3.71159</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥91</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">0</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#e74c3c">3.5</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#e74c3c">3.6</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">进贤路130号距地铁13号线淮海中路站3口步行550</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">13号线淮海中路站3口步行550m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">草头</span><span class="dish-tag dish-hot">酱爆猪肝</span><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag">酱鸭</span><span class="dish-tag">腌鲜汤</span><span class="dish-tag">椒盐排条</span><span class="dish-tag">干烧鲳鱼</span><span class="dish-tag">萝卜排骨汤</span><span class="dish-tag">蟹粉蛋</span><span class="dish-tag">炒鳝丝</span><span class="dish-tag">青椒猪肝</span><span class="dish-tag">荠菜豆腐汤</span><span class="dish-tag">空心菜</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/msmerchant/8ffa80bfeddca02f554d990d09f35d0117229.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/zsX9fdSIJl9xmHhly-03t94lEiaU-mRSSTR1CsksulRn7xemlfm1SfTcjzvYztfZ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/kw-brQGoQCP1sCOAU2qloX3dVKZ_hkjECjCBJYJDtn10pYfr2KBoLfNE6Hf9eI0J2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/-yIq4AyasRVUU9lSpUHuVa93o3n4dhzjHr98sJHu-sTWWorxwc86XguHgZFYV6Ul2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/jjkNR9lrYHans4E9ADrqxkGRcB4nKK3rSeWSFa8HUPcAb8r_hf-IFICmmcbudOWm2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/BhbEN2ALgUHnCCjRqA3xW4_UuLmi8GYcZuLRlwULcspB9VllWyTVTUGM9rukpoF_2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/5-wkPmRAV-CXPNqr1JrieAKc-AQCbxD-M2G1wEHekcfqXm2HtzD0_0iLqcPQ9E9z2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/284e9c2100a4e5f4d04591bf14ecd7b41080679.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">必点菜品 (422)</span><span class="keyword-tag">上海本帮菜馆 (237)</span><span class="keyword-tag">排条酥脆多汁 (146)</span></div></div><div class="review-section"><h3>⭐ 用户评价</h3>
+<div class="review-box">
+<div class="user">lucy_484</div>
+<div class="meta">5天前 · 超预期 </div>
+<div class="text">居民楼里的小餐馆，二层，需要拼桌，离地铁站不近，大概走20分钟吧，要了3个菜，都吃光了，不腻，吃完很舒服，阿姨们服务很和蔼，老板人不错😌</div>
+</div></div></div></div>
+
+<div class="shop-card" id="shop-6">
+<div class="shop-header">
+<h2>老兴鲜(黄浦店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.9171</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥235</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+<span class="award-badge">2026上榜一钻餐厅休息中11:00开始营业有包厢有大桌付费停车</span>
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.9171</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥235</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">4</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">淮海中路918号百盛商场5楼距地铁1号线陕西南路地铁站2号口60</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">1号线陕西南路地铁站2号口60m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">白烧鳝背</span><span class="dish-tag dish-hot">秘制熏东海小白鲳</span><span class="dish-tag dish-hot">现包鲜虾春卷</span><span class="dish-tag dish-hot">老兴鲜全家福</span><span class="dish-tag dish-hot">浦东特色白斩鸡</span><span class="dish-tag">咸菜鲜笋炒目鱼</span><span class="dish-tag">带骨鸡丁炒八宝辣酱</span><span class="dish-tag">初一锅巴</span><span class="dish-tag">清炒手剥河虾仁</span><span class="dish-tag">糖醋排骨</span><span class="dish-tag">本帮清蒸东海油带鱼</span><span class="dish-tag">龙皇泡饭</span><span class="dish-tag">酒酿白鳝</span><span class="dish-tag">老底子草头圈子</span><span class="dish-tag">老上海桂花肉</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/deal/72159ac872a0d05fbd9b69e072bea377291375.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/content/edb5d1b9953f6c9e55376cfb011ac723163339.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/pmaG2Nw4f5i3rT9Yi50wf8sBvHGHQuStB53KF_1sTg8g1OhRWDRTWHBgWePWJRw82kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/SDLLYcSvgY2iBH5TcVdAiuvSGpGps-WzSAXk2n3c0hv4s_s2rFRb8vy6tLYo-HVF2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/laPTdksbK96zYUffZnapTlHnyz8pCGfR_flKe9FOtza8pevDDidVXH1AlWlgY78b2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/nELilDLsJj3Ri0U5LXxswWHWaeMXIWyzjmp8CGkvMgNnLRrqpf9aoyNJWQKgAkYi2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/-HcGmoN43w_f9F-5gjXAO68K8ksJiceAmZpnjcK6Z9h-ZdxfBxIq3_457mqQRLw62kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/I4WRJGq_QzkNJjkRDLG0M27KnwNJ_t58D4RdcmofHnAAb8r_hf-IFICmmcbudOWm2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">小时前有新增评价查看全部提前预约可避免排队 (214)</span><span class="keyword-tag">停车建议 (101)</span><span class="keyword-tag">白烧鳝背招牌菜 (2609)</span><span class="keyword-tag">白烧鳝背搭配菜 (1477)</span><span class="keyword-tag">包厢最低消费 (54)</span><span class="keyword-tag">不愧是本帮菜馆 (1882)</span><span class="keyword-tag">套餐海鲜新鲜 (1286)</span><span class="keyword-tag">送生日面和果盘 (130)</span><span class="keyword-tag">店内环境整洁 (1527)</span></div></div><div class="review-section"><h3>⭐ 用户评价</h3>
+<div class="review-box">
+<div class="user">nic372</div>
+<div class="meta">3天前 · 超预期 </div>
+<div class="text">来上海出差，朋友请吃这家。 工作日晚餐时间门口一群人排队，很多还是本地人，还好朋友提前预定了，看来的确是本地人喜欢的老上海菜。 每一道的味道都咸鲜爽口，分量和味道都恰到好处。点名评价一下服务，真的太周到细心了。朋友不能喝茶水，特意更换了热水和新的杯子，我爱吃西瓜，餐后又多上了一份西瓜。途中会耐心讲</div>
+</div>
+<div class="review-box">
+<div class="user">019酱</div>
+<div class="meta">2天前 · 超预期 </div>
+<div class="text">真的太喜欢老兴鲜了 每年夏季的冰醉小龙虾必点的，龙虾也很大只，口感刚刚好 糖醋小排一改往日的形式，油炸排骨➕糖醋汁，料汁也十分适宜 鲜虾春卷一口咬下去，皮薄馅儿多，和家里做的完全不是一个级别，价格也不贵 酒酿豆沙圆子就和家常烧法差不多，不像其他店铺那么多勾芡 鸭舌小朋友简直太爱了，一口气全部一个人</div>
+</div></div></div></div>
+
+<div class="shop-card" id="shop-7">
+<div class="shop-header">
+<h2>老正兴菜馆(福州路店)</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#e74c3c">3.9871</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥150</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#e74c3c">3.9871</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥150</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">3</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">南京东路街道福州路556号</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">1号线人民广场站出入口步行510m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">草头圈子</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag dish-hot">八宝辣酱</span><span class="dish-tag">红烧划水</span><span class="dish-tag">青鱼秃肺</span><span class="dish-tag">红烧肚档</span><span class="dish-tag">虾籽大乌参</span><span class="dish-tag">蟹粉豆腐</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">松鼠桂鱼</span><span class="dish-tag">清炒河虾仁</span><span class="dish-tag">熏鱼</span><span class="dish-tag">糖醋小排</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/fd6795c14c3267a29592cb504fa0d06b3341215.png%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/18d2f625de7c08cc811bbe602ee3af1197246.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/dC5RxSRbaxoMr2LtKUcTyop4V8eMhejsuSz9JWQFVbj-UfqCJIEC1WFy8saZRjXQ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/aVOPtUE4_l9yAi06ZM0LRyQZOlA2AlDFHJVvsdZPqoxXTOMH3p_hdz-1Rd2fFg-Z2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/jnASY_1Eifn6e4Su2Ze0axpUrjPxEgBIwKcV2UX4z28jEVDbMf2Inc6CfPoQMCUh2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/6d-9Tmiazw9DoWijwDTq2n4T4innwLgprmSLszvTsUyRlI81-M3O3fPnNpJvqXb42kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/Pm8tNS3XDGziG3YRFr1F6OJ1-KZAYKe7HCv9-kRVpxG78AwJ5FdcB0_MCHaehpCy2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/gw6gGLJIPMhz0QJtyavc3-Zq9sFPy_omJlmL015GCz7_TBYel2CwB0r-Csb98Lix2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">就餐环境整洁 (208)</span><span class="keyword-tag">停车建议 (13)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-8">
+<div class="shop-header">
+<h2>龙吟山房(苏河湾万象天地店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.7256</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥349</span>
+<span style="margin:0 8px">|</span>
+<span>淮扬菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.7256</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥349</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">9</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">福建北路100号苏河湾万象天地慎余里4号楼距地铁曲阜路站5口步行550</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">曲阜路站5口步行550m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">招牌红烧肉</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag dish-hot">黑松露鲍鱼</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">清蒸石斑鱼</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">油爆虾</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">酒香草头</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">熏鱼</span><span class="dish-tag">杨枝甘露</span><span class="dish-tag">黄鱼馄饨</span><span class="dish-tag">狮子头</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/1b2164412e3d93acdab49d77d3c097fd211089.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/3a52aca966a67ac14e5dd0af12b7039e59273.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/2afb06b9e52be5beeb8aa99b41019c8c101738.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/m_F9WwbP7tZqbvCKD0G_0-FQPfWSElfZbE-6yVOT1l4t4bOyhjlnWoet6PhxryCe2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/zTBuYt1VyqSZ51HU2PC9FqJp6GAaG2L-dzrpszTAEjWizBkgYacapGgyN0md8Svx2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/ay3PKP3pR-Q5diUtwqjZpz3Qs04IdZd9YLSjodzo5dcvoB6j8tXmjZ3PXSkN9bY92kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/iw_Qn1GpYTXsKzrLezpYgPRZTaLEmc5AfStJEiFwcIiWqf4QM1Dn5g0h1fysp28W2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/uE4Oq0zu534KnJS44LKozWeL_XgzR6C7MNCzwzK_qk_D7XEoq6IKijddRdXmBkwX2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">停车建议 (30)</span><span class="keyword-tag">必点招牌 (71)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-9">
+<div class="shop-header">
+<h2>龙悦舫(丽园路店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.5698</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥125</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.5698</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥125</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">4</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.5</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">丽园路718号</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">9号线马当路站3口步行290m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">10:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag dish-hot">草头圈子</span><span class="dish-tag dish-hot">八宝辣酱</span><span class="dish-tag">蟹粉豆腐</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">熏鱼</span><span class="dish-tag">清炒河虾仁</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">松鼠桂鱼</span><span class="dish-tag">酒香草头</span><span class="dish-tag">腌笃鲜</span><span class="dish-tag">八宝鸭</span><span class="dish-tag">生煎包</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/0fd85d89cb000a3e8510c905cd414527181313.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/8216a496f9f458e5d7b0fd58d1efbfc0964365.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/4a233fe30b6e3b8011a61eae02f5ab19937373.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/c3b71c42b690fb73da162bd96af8ef89694823.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/ugcpic/f12ae634e7b46854e6eccb9d32ef6f191127001.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/f7971ff47a75a3cd05bde030d9f9ca5a992401.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/tHG-J8rObNewWVJV2Eh2sU8z84q_OOCMaduHfoWDKC0lLKqqCa7lTYpPJT5IGI5v8h2XNvP-nQ1enVEU1I0p7TBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/dRSyURiUXsCKpnbptCmqs4FokCrtdpwyMoHe5gY1ojOdIsWXuKniJSh7VbaMpj6k2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">停车建议 (84)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-10">
+<div class="shop-header">
+<h2>鹿园 MOOSE(浦东店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.7691</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥368</span>
+<span style="margin:0 8px">|</span>
+<span>淮扬菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.7691</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥368</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">1</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">浦东南路899号上海陆家嘴中心9层908</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">浦东南路(原东昌路)站出入口步行310m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">北京烤鸭</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">黑松露鲍鱼</span><span class="dish-tag dish-hot">招牌红烧肉</span><span class="dish-tag">清蒸石斑鱼</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">油爆虾</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">酒香草头</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">狮子头</span><span class="dish-tag">虾籽大乌参</span><span class="dish-tag">桂花糯米藕</span><span class="dish-tag">黄鱼馄饨</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/deal/62dcea4052e3f7affaeaeaa23d6577603850281.png%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/content/fb10bf6f0c3bda4a82a2ef9514ce7b9963296.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/IScgXp8DRJSDpO6M-oe_coZlNTO8P6YK4lg-UeJq1FOS0DebDtoFHZ90sPjPBhZV8h2XNvP-nQ1enVEU1I0p7TBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/DlSMxAGlgeuB-mVTE62v9irRxZzL0toxYBiEFdLvM3Eg1OhRWDRTWHBgWePWJRw82kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/7K5xyzxJiGBUUUbW5stJ_a8nnNNPo41bTKFgSE-wP7zNPFyE722yI9MT-DpGSgJ_2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/iHC7qeRkaU6VDee48MCW5iaAKywxqldiQa0j4mqnI975ZmIEKNUN9uvUxuySt6Eu2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/MA40b9BFM_0Aiy9YCNXGFP9zH_cA5ZqBfosr6kBysRIBCEbsCBOGahNN10jEn9Ns2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/KagpgYRwsIO5guneiKJWjHV29Cxys_fqKj895tIYkZATu5ieP5VcTi_yLjKpxw0Z2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">新中式雅致环境 (62)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-11">
+<div class="shop-header">
+<h2>茂隆餐厅(进贤路店)</h2>
+<div class="sub">
+<span class="stars">★★★★☆</span>
+<span style="font-weight:700;color:#e74c3c">3.9261</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥126</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#e74c3c">3.9261</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥126</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">1</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#e74c3c">3.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#e74c3c">3.7</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#e74c3c">3.6</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">进贤路134号</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">13号线淮海中路站3口步行540m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">草头</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag dish-hot">酱鸭</span><span class="dish-tag">腌鲜汤</span><span class="dish-tag">椒盐排条</span><span class="dish-tag">干烧鲳鱼</span><span class="dish-tag">草头圈子</span><span class="dish-tag">葱烤排条</span><span class="dish-tag">酱爆猪肝</span><span class="dish-tag">糖醋排骨</span><span class="dish-tag">酒香草头</span><span class="dish-tag">荠菜豆腐汤</span><span class="dish-tag">蟹粉蛋</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/merchant/488d713c70ae52ecd8e5be58efb4ce25347449.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/SjieE222epvZ0RsRsr3flidkNmfoteee6yoRk7DSWQ6q7O0KJucHIQ31VOr2IUz62kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/lDBDv7-m9zDkojdTx_YClbya2ZVgkIuk8QAI4oB2MzXNPFyE722yI9MT-DpGSgJ_2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/EuCZQ_Zck0agVRLZ7Myzs5Nz3FF0aa2cN6F3zrMrnHtlG-Nlxm-qdkRIQdD3HBXS2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/yWD_4QOQdtddmvDqoKmFggo4v1Nmn0Ccwz6GIPdMjAAKLLkDeVs2LtN7o7n2OIhA2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/YJ5mPi771ujsrj8mJd2MREcoRtk6McKnYhUlRvW4WJLU6LcAzALQiIoEmHO9xyl22kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/opN2zoX3KyzbDjOrBwkP37ilIhw3TeshKI6KqFCqJPK2g2VdluthO0zlKCQJ7NvV2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/u48aFzFPr5EuEMYeuA3RYEjO9pGVFDxEbVxLvIAgr3iMFM2Rj4X_CayvqKpsb-Wp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">必点菜品 (79)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-12">
+<div class="shop-header">
+<h2>外滩家宴·上海本帮菜(罗斯福公馆店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.8105</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥145</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.8105</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥145</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">5</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">中山东一路27号附近罗斯福公馆一楼</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">10号线南京东路站出入口步行690m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">10:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">外婆红烧肉</span><span class="dish-tag dish-hot">招牌油爆虾</span><span class="dish-tag dish-hot">上海熏鱼</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">松露石锅饭</span><span class="dish-tag">鹅肝酱配面包</span><span class="dish-tag">黑松露红烧肉</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">清炒河虾仁</span><span class="dish-tag">松鼠桂鱼</span><span class="dish-tag">生煎包</span><span class="dish-tag">酒酿圆子</span><span class="dish-tag">蟹粉小笼</span><span class="dish-tag">黄鱼馄饨</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/a06d9d465fdc769d3a1ff5660cd6551f129248.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/d8c5fa88c83cfb1f5dc81356211bf1d6180826.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/ee416d942548d3d93d92d14534103ecb244679.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/-8_L8BT4Aby_lHcIFeuFlV3in2gC1Poj02eXzXnzZGA7pJNvu8yvsIX5X0rpzzdC2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/bTi190GtpkdNjZQxvZp1pyQTTf8yq0GUsi9VqHMxJ1tBzX1EelOCRieoNoV4Rnjp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/fp3pi7WKgVvqXFzIw3pWlVfJFj7QtvdoNwSc2KZHgr4gpCwni79i_Z4Rp0R77NEZ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/EZnEM4Rpi6ce8cF2PBPnC7G5go2gH7eWP71sfeDfETEpESkbRho5pOMfObXW3YWp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/vNUGN6Js-hv-ANnYfyYw-Gkv_fcjxAjU5jwV5GrU-oUKLLkDeVs2LtN7o7n2OIhA2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">分钟前有新增评价查看全部一线江景位置 (122)</span><span class="keyword-tag">菜品团购价格优惠 (12)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-13">
+<div class="shop-header">
+<h2>西郊5号·Maggie 5</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.9316</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥789</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+<span class="award-badge">2026上榜一钻餐厅休息中11:00开始营业有包厢有大桌免费停车</span>
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.9316</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥789</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">5</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">虹古路669号</div></div>
+
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">招牌红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">松露鲍鱼</span><span class="dish-tag dish-hot">清炒蟹粉</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">酒香草头</span><span class="dish-tag">熏鱼</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">清蒸鲥鱼</span><span class="dish-tag">黑松露炒饭</span><span class="dish-tag">黄鱼面</span><span class="dish-tag">鹅肝酱葱油饼</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/bbia/fe22cb77bca38bb40506c0c45d89931e444601.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/scpdeal/d2954702e82d9267a50cd665cedf22e9119975.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/a824fac8bbb80b94fa40c5001a1858b81111352.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/ugcpic/2c99b739d2580eb49eab8bc54da3d733356451.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/5780b928187f12c9e956ed54e6ce608a383329.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/QLVBom17N6ny8O1NmJZM_S2dx-uMYOSRt_IQL0mVr_G2g2VdluthO0zlKCQJ7NvV2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/9mp5Ow1Bd6JSgbr7o7edmZ28Y3YdIvcW1RD42h4yZEa0gWbrU4JmAKDFBgm_QjLP2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/UPRUH3UQvF3WebfsVOdpqR2YncR7z8yoQLWdbtmoXwTKFTk7u3yLG1LGGibU35JC2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">帮忙停车服务 (19)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-14">
+<div class="shop-header">
+<h2>新荣记(南京西路店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.81389</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥680</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.81389</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥680</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">5</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">南京西路688号恒基688广场</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">13号线南京西路站5口步行350m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">脆皮乳鸽</span><span class="dish-tag dish-hot">沙蒜烧豆面</span><span class="dish-tag dish-hot">黄金脆带鱼</span><span class="dish-tag dish-hot">鲳鱼烧年糕</span><span class="dish-tag dish-hot">蜜汁红薯</span><span class="dish-tag">黄鱼</span><span class="dish-tag">黑松露鹅肝包</span><span class="dish-tag">龙虾汤泡饭</span><span class="dish-tag">桂花鸡头米</span><span class="dish-tag">原味仔排</span><span class="dish-tag">溏心富贵虾</span><span class="dish-tag">花胶黄鱼羹</span><span class="dish-tag">特色炸带鱼</span><span class="dish-tag">椒盐九肚鱼</span><span class="dish-tag">黑金流沙包</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/3729eccb8ca101ab24b9ffdf741bcc9f29708.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/Jdb-2y3_qRKE7-q8BWhkfCcQRdw1pL-n4bmIARgpYIJ0pYfr2KBoLfNE6Hf9eI0J2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/tVpXdASwADXY5gsR4mSO8Z6AV0qbPYM4FhDPSCSL_gcxYNaVI4bNr7MZzq9CErqp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/1zA5LCPF2Xi54cz6rU1Hrs3JjIz6l5ItiOcMNbSwV9AhF3QS8ELTGecLFxrOo5Eh2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/4nghyfT5mK4b2R-oZORrgmauf1OX6TB1cm_XpaBoLN57SxwnRndTtCf03vrl00Gy2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/f5N5wNyRfmLWTuA-n0nZTdh-TYcvTPaDJNMMCPn1RUS25jIWculJDosTdE81W9lt2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/rs4G4uRFTTye_qMx-f226XpXuE3EuDNir8KC44e278fEqXcZEr7acht8kHYxHRft2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/GeLxOpgajKK629udWLZx1e_qNNFSZ1ctrlYlg-KPXk_eEKMN36O0VsarpttEWjHs2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">小时前有新增评价查看全部台州小海鲜融合 (36)</span><span class="keyword-tag">沙蒜豆面为招牌 (395)</span><span class="keyword-tag">家烧鲳鱼配年糕 (404)</span><span class="keyword-tag">服务员介绍替代菜品 (63)</span><span class="keyword-tag">经典菜包含红薯 (123)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-15">
+<div class="shop-header">
+<h2>新荣记(前滩店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.8264</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥977</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>八佰伴</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.8264</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥977</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">3</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.9</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+
+<div class="info-item"><div class="label">地铁</div><div class="value">东方体育中心站1口步行250m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">脆皮乳鸽</span><span class="dish-tag dish-hot">沙蒜烧豆面</span><span class="dish-tag dish-hot">黄金脆带鱼</span><span class="dish-tag dish-hot">鲳鱼烧年糕</span><span class="dish-tag dish-hot">蜜汁红薯</span><span class="dish-tag">家烧黄鱼</span><span class="dish-tag">花胶黄鱼羹</span><span class="dish-tag">龙虾汤泡饭</span><span class="dish-tag">黑松露鹅肝包</span><span class="dish-tag">原味仔排</span><span class="dish-tag">桂花鸡头米</span><span class="dish-tag">椒盐九肚鱼</span><span class="dish-tag">溏心富贵虾</span><span class="dish-tag">特色炸带鱼</span><span class="dish-tag">黑金流沙包</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/3729eccb8ca101ab24b9ffdf741bcc9f29708.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/1GeLlsaqV1TPFS9rp7xjbfBXWh8RJXsC1TA6LraUy0f17oDKIJBspd_OnsUcWROP2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/oYe98R57SSP48NRK6QBaeXs1yrnAUNuGNUU0k5aDsINdPOwPMObQZD_yDC8uq_hR2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/i9kllWzkCoRxIXE75WW32MnK2TgqG5JMAInI6qH1H5WkXF_S3vPZFB-yG88O2DOJ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/Z7o7Knic5UM56RUDKvPcfsV7spviSlvptVAgIaZboXyizBkgYacapGgyN0md8Svx2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/hQTUVH-JFqWHCVsV0hVzW58PFfYzjoUiV4GIJgNdcdNTcfKEgZ2tf8z1s0GV9hyM2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/Bc00rG1WkXwtDxLedjBzsI8-eZyXycXMq4t7IN9VHjwo9RRqc-BedVVTGb6__GEO2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/ugcpic/feabce527ca9c9e7aec16a5128f726001177499.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">必点菜品 (155)</span><span class="keyword-tag">停车建议 (53)</span></div></div><div class="review-section"><h3>⭐ 用户评价</h3>
+<div class="review-box">
+<div class="user">贤真有才的小姜</div>
+<div class="meta">4天前 · 超预期 </div>
+<div class="text">超级无敌好吃 叫格格的服务员也特别特别特别可爱负责 可喜欢呀</div>
+</div></div></div></div>
+
+<div class="shop-card" id="shop-16">
+<div class="shop-header">
+<h2>叶马(环贸iapm店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.61</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥158</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.61</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥158</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">0</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.7</div></div>
+
+<div class="info-item"><div class="label">地铁</div><div class="value">10号线陕西南路站7口步行250m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">家烧黄鱼</span><span class="dish-tag dish-hot">沙蒜烧豆面</span><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">葱油海瓜子</span><span class="dish-tag dish-hot">脆皮乳鸽</span><span class="dish-tag">糖醋排骨</span><span class="dish-tag">油爆虾</span><span class="dish-tag">蟹粉豆腐</span><span class="dish-tag">鲳鱼烧年糕</span><span class="dish-tag">桂花糖藕</span><span class="dish-tag">黄鱼面</span><span class="dish-tag">雪菜炒目鱼</span><span class="dish-tag">海鲜炒粉干</span><span class="dish-tag">龙井虾仁</span><span class="dish-tag">八宝饭</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://p0.meituan.net/deal/2efe474f1fe987b7243f08abbf6c0a86129631.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/deal/72678753e8f0c608735c272ce9af850f118094.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/f4b2f41a50dab23fc84f8cdabcc3b7d1796932.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/bb6f275aae02a034cb7e0f584e516cec481138.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/b1ae546e8c9738d2681ac3a5b0dfad04345732.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/jAvgEeYpX0kRw2LenIhmCOTtHvfhu_IDYeOx-wdVd5jLWM2-jw4XiQH8L4pK3mWD2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/DE9LrkIHQL0akwKy83h44L8pGtLBEhRIBKHQJ5eRGxN2VLEmPPze9GgmMDEy2dco2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/dSLfi8vOtm5_orzblT5oJ_dd5okl2Gt6gshSrk_tNFrC5NOWIR-x3DbGI6JfU4-t2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">环境干净整洁 (1455)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-17">
+<div class="shop-header">
+<h2>逸采EASEFUL CUISINE(普陀店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.835</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥208</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.835</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥208</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">6</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">武南路88号金环广场3楼301</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">11号线武威路站2口步行330m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">黑松露红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag dish-hot">清蒸鲥鱼</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">酒香草头</span><span class="dish-tag">熏鱼</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">黄鱼面</span><span class="dish-tag">八宝辣酱</span><span class="dish-tag">清炒蟹粉</span><span class="dish-tag">生煎包</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/943ea14358790238529f59cd9d1399e3489175.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/82420ca8484593e884ca1fd355a2df3b462252.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/y_gDjbYGLZXYp4DgNihdRsJK3yjX4NF7hu9AJj4KYnGkXF_S3vPZFB-yG88O2DOJ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/JxdXf8yrVz9BxBP7d7ar0oI1APVFkYSnR6ALJCiHlCSa2fOE0Z1ykh4H7rUPKrvZ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/9miW_aZd-jyf-7cdv5EVHdGHZOaej8-CAQ9hoOHvVPO25jIWculJDosTdE81W9lt2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/xk__n_f5eUgn5TIvsec-aZkWqQQyJe_kojpRrvmQIU4WbMowzpaiVtXhUR-ticw22kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/ePFpnRDX86dI0ZeWA5xgOVjQy6w_FfEvE1g-kVGNUhFr8WVCL5wRkXAU9PttKJ3c2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/ynim-JyDjLCa_ZFpMf3JAreEvkxCyTdvS3z3A-J6QT44q42Ew8YD3vz_slnvBYd-2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">小时前有新增评价查看全部商场提供免费停车 (26)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-18">
+<div class="shop-header">
+<h2>逸谷会(静安嘉里中心店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.8142</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥280</span>
+<span style="margin:0 8px">|</span>
+<span>特色菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.8142</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥280</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">5</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">南京西路街道南京西路1515号静安嘉里中心北区</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">7号线静安寺站6口步行240m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">黑松露炒饭</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag">清蒸鲥鱼</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">酒香草头</span><span class="dish-tag">熏鱼</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">狮子头</span><span class="dish-tag">八宝辣酱</span><span class="dish-tag">清炒蟹粉</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/b05d7f1580d9535d9a6cbec1d61a057051127.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/deal/064b118ba51beb3d9d030325e464bd17300297.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/deal/467503e4746acafd5334cc3b56a59303288037.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/HdMrH6U7xHwYhhgcWiz6CsftptQHNhQiHTjTIr14zOf_TBYel2CwB0r-Csb98Lix2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/t5JKN7fRDIrjcRjFAp0ojGQ67jBEHYe0ifUNyUp6WOPI6bmcNwShu9gIlR3WuP332kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/pWV9t2JwtBaQzx3f7esOCDKSMGLfgVeANqq5lYN0sOBc0lOjBafjUECcm_fKNylI2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/BBUQIa1EsoX60aoLFvZpV4TD1985is1lNcE9Xu6v-31hlDR-OFbG-gm4qRpUw9V_2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/i8iqPyBapkQuz1VDJiUKtXuige50JsMDtKJ8emhWVt4eWFOJeU6M6LGGH0WvmqSr2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="review-section"><h3>⭐ 用户评价</h3>
+<div class="review-box">
+<div class="user">freaswindcc</div>
+<div class="meta">3天前 · 超预期 </div>
+<div class="text">朋友聚餐 推荐这家的银鳕鱼炒饭很好吃 于是一行人下班就来了 提前订的座到达以后丝滑落座 餐厅环境优雅干净 七七八八点了很多菜 每道菜的量不是很大 但是食材很新鲜 调味和口感也很不错 田螺肉质紧实爽口 醉虾个头很大肉质q弹 牛蛙蛮嫩的味道也很鲜 银鳕鱼饭也很不错 服务非常到位 小姐姐一直及时更换骨碟</div>
+</div></div></div></div>
+
+<div class="shop-card" id="shop-19">
+<div class="shop-header">
+<h2>雍福会(永福路店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.5539</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥552</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>淮海路</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.5539</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥552</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">5</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#f39c12">4.4</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.7</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">永福路200号距地铁10号线上海图书馆站1口步行480</div></div>
+<div class="info-item"><div class="label">地铁</div><div class="value">10号线上海图书馆站1口步行480m</div></div>
+<div class="info-item"><div class="label">营业</div><div class="value">11:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">招牌红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">烟熏鲳鱼</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag">鹅肝茶碗蒸</span><span class="dish-tag">清炒蟹粉</span><span class="dish-tag">黑松露鲍鱼</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">酒香草头</span><span class="dish-tag">熏鱼</span><span class="dish-tag">糖醋小排</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">蟹粉蹄筋</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/b7f8ea1596ec6a24efa33a6c90031ea7130964.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/5a08481967d97f2d9b30d641f67b2299170651.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/c2356d36f3e6a7f1397c62164aa47828275844.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/rSXOlEzfMsRGRjBX3bDv5tMjO9w60d343_4pWpIHimpS_Hl-S3VE8j1oEie8KrOr2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/vlD6xstH7yrjkDFagIDKWQEuK67kgOjWa11Umnyi_URdknq1ppcDiBaLDx9ExWqZ2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/8HZjoRgq-9saFEcpDj85h9RHlkNOGi5lkzUOyasOz5Ut4bOyhjlnWoet6PhxryCe2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p0.meituan.net/ugcpic/a0b05b11a71e8330b15a9c3f7ea96310894526.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/ugcpic/77ca8ada534257d040eef8bd2ff9cf43703159.jpg%40400w_400h_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">必点招牌 (118)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-20">
+<div class="shop-header">
+<h2>雍颐庭</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.8335</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥470</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.8335</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥470</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">4</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">浦东南路139号上海浦东文华东方酒店</div></div>
+
+<div class="info-item"><div class="label">营业</div><div class="value">11:30开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">老上海熏鱼</span><span class="dish-tag dish-hot">蟹粉豆腐</span><span class="dish-tag dish-hot">松茸汤</span><span class="dish-tag dish-hot">糖醋小排</span><span class="dish-tag dish-hot">清炒河虾仁</span><span class="dish-tag">花胶鸡</span><span class="dish-tag">黑松露鲍鱼</span><span class="dish-tag">油爆虾</span><span class="dish-tag">酒香草头</span><span class="dish-tag">红烧肉</span><span class="dish-tag">黄鱼馄饨</span><span class="dish-tag">八宝辣酱</span><span class="dish-tag">响油鳝丝</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">蟹粉小笼</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/bbb0bfc89faa75ae1a73d8d5e74708a5359776.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/e4103a2aa06e9834090a5b7dd4d0cf6984778.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/5aa6e845af999ebb1fa18d18908129b8268656.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/vCV5LXcA5dNh06oTeSR8IftXNWXtL13GpO-xeBx4yoq2g2VdluthO0zlKCQJ7NvV2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/mDyst9IJTXE43FE0ShBo_hh_XqizUhxW3xjBbjY-Obd0aT35lrODnAM7thRIibZC2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/w7IwNR89O42k_fWxnrs5bfOBIh8vMvoyeQ2qtCQAmDLXBIAo6y1_NoqZeXjY99w22kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/8uVKyZtqv4MTzwgf3TiYOIjhsagoRhw4lFhjYA4a3B1lG-Nlxm-qdkRIQdD3HBXS2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/fhUnwnGO2L-Ez7uzlNTTCde9lu1WTKCSKo5Fpc4ca80WbMowzpaiVtXhUR-ticw22kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div></div></div>
+
+<div class="shop-card" id="shop-21">
+<div class="shop-header">
+<h2>越稽·地道绍兴菜馆(爱琴海缤纷里店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.626</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥114</span>
+<span style="margin:0 8px">|</span>
+<span>浙菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.626</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥114</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">3</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.6</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.6</div></div>
+
+
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">绍兴醉鸡</span><span class="dish-tag dish-hot">茴香豆</span><span class="dish-tag dish-hot">梅干菜扣肉</span><span class="dish-tag dish-hot">黄酒牛肉</span><span class="dish-tag dish-hot">臭豆腐</span><span class="dish-tag">糟鸡</span><span class="dish-tag">酱鸭</span><span class="dish-tag">油焖笋</span><span class="dish-tag">干菜河虾汤</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">绍兴三鲜</span><span class="dish-tag">霉千张蒸肉饼</span><span class="dish-tag">黄酒棒冰</span><span class="dish-tag">酒酿圆子</span><span class="dish-tag">桂花糖藕</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/f5603e6cad7c05a8fc1170bc7544d69299747.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://p1.meituan.net/content/45e5422c175cb8eee38b7ca04447c849224927.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/d7e7ff66380a849957796f5b07ea2db6244706.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/BhiPoKyIamTVuBtemE53n7hIRUsw2nTlMti8tld_fRQ7w3rMKvE5UCxfjnKNBwDx2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/FXwX0u4XniW5gbF4Eh-GtqEkBA4NGVuLNukPpYuB-cMUdMG_1JjZ6iIqzd5BJEag2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/2vlY4AAmdW0jgz86EKLLTLKzpf3Ulqv7v1wUSb6zsAyfxTGqSO7v3oOW5gALzlFm2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/vCZcbQqF9dIS5KdTn9c698w-Jyz6FCIPm6IUjObNkYc0lf53-gCrKyrRL0wt5nAz8h2XNvP-nQ1enVEU1I0p7TBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/7bPdAmfDsJON1Ptl4Y1W20K6v6l99D3GcyS1zc4kk_8eWFOJeU6M6LGGH0WvmqSr2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">周末饭点排队 (23)</span><span class="keyword-tag">店内环境整洁 (904)</span><span class="keyword-tag">停车建议 (45)</span></div></div></div></div>
+
+<div class="shop-card" id="shop-22">
+<div class="shop-header">
+<h2>周舍·海派菜(虹桥店)</h2>
+<div class="sub">
+<span class="stars">★★★★★</span>
+<span style="font-weight:700;color:#27ae60">4.8224</span>
+<span style="margin:0 8px">|</span>
+<span class="price-range">¥378</span>
+<span style="margin:0 8px">|</span>
+<span>本帮菜</span>
+<span style="margin:0 8px">|</span>
+<span>南京西路商圈</span>
+<span class="award-badge">2026上榜一钻餐厅休息中11:00开始营业有包厢有大桌付费停车</span>
+</div>
+</div>
+<div class="shop-body">
+<div class="shop-info">
+<div class="info-grid">
+<div class="info-item"><div class="label">评分</div><div class="value" style="color:#27ae60">4.8224</div></div>
+<div class="info-item"><div class="label">人均</div><div class="value">¥378</div></div>
+<div class="info-item"><div class="label">评价数</div><div class="value">4</div></div>
+<div class="info-item"><div class="label">口味</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">环境</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">服务</div><div class="value" style="color:#27ae60">4.8</div></div>
+<div class="info-item"><div class="label">地址</div><div class="value">苏虹路318弄16号虹桥丽宝广场3号楼一层距地铁虹桥火车站</div></div>
+
+<div class="info-item"><div class="label">营业</div><div class="value">11:00开始营业</div></div>
+</div>
+<div class="dish-section"><h3>🍽️ 推荐菜 Top 10</h3><div class="dish-list"><span class="dish-tag dish-hot">招牌红烧肉</span><span class="dish-tag dish-hot">油爆虾</span><span class="dish-tag dish-hot">黑松露红烧肉</span><span class="dish-tag dish-hot">酒香草头</span><span class="dish-tag dish-hot">响油鳝丝</span><span class="dish-tag">蟹粉豆腐</span><span class="dish-tag">大明虾</span><span class="dish-tag">清炒蟹粉</span><span class="dish-tag">葱油拌面</span><span class="dish-tag">糖醋排骨</span><span class="dish-tag">浓汤鱼肚</span><span class="dish-tag">梅菜扣肉</span><span class="dish-tag">清蒸鲥鱼</span><span class="dish-tag">糟溜鱼片</span><span class="dish-tag">毛蟹年糕</span></div></div><div class="dish-section"><h3>📸 菜品实拍</h3><div class="image-row"><img src="https://img.meituan.net/content/493d34f94b76b3d63a9414e09d454a44144817.jpg%40750w_1e_1l%7Cwatermark%3D0.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/4d82eaddfb0e9144e34931145868ae5e4412983.png%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://img.meituan.net/content/cee6d5b4f9638b0fe53fdf03e06c2f3165311.jpg%40168w_168h_1e_1c_1l%7Cwatermark%3D0" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/ZkvzFn-xDtW4hcY0FqGdIl-TVT8yN7ZUxtHubdVjFvNZA2H0-FGV6dkb-Tp4Hy3l2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/49Cw7A1pO1rrb9pGFlfKZZYdPbL_OEr-3tfRVVWgLHv64te72TVqU6B0bZXlaRbp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/wBOTOI0z8uYqak9L_-4XjmCyxiWoHDglfUBWrASXq87avuU3ik-I4P9euqpPAei52kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/gT6_3FVPqdzPDc_-xlZ99s34z9YI-gWNxZXYnA8khUK89Zv2tsRvtxQi2Z4PCZP12kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"><img src="https://qcloud.dpfile.com/pc/pxJnV1w9gAp8qrPn9H6aUHf4W44crj3nY5V9881hKDNBzX1EelOCRieoNoV4Rnjp2kbkY03a1njY8D2OXLxYrjBdApxUyvX0xAZ0By9OkEc.webp" loading="lazy" onerror="this.style.display='none'"></div></div><div class="dish-section"><h3>💬 评价关键词</h3><div class="keyword-row"><span class="keyword-tag">环境干净卫生 (115)</span></div></div></div></div>
+
+</div>
+<div class="footer">
+<p>仙味楼 R&D 助手 · 上海本帮菜米其林餐厅研究</p>
+<p style="margin-top:4px">数据来源：大众点评 · 仅供菜品研发参考</p>
+</div>
+</body>
+</html>
