@@ -4,64 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>仙味楼 · 菜品研究方向清单</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
-.container { max-width: 800px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; }
 
 .header { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; padding: 40px 24px 30px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
-.header h1 { font-size: 24px; margin-bottom: 4px; }
+.header h1 { font-size: 24px; }
 .header .back { display: inline-block; margin-top: 8px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; }
 
-/* Big count badge */
-.count-bar { background: rgba(255,255,255,.15); border-radius: 20px; padding: 8px 20px; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
-.count-bar .num { font-size: 28px; font-weight: 800; }
+.count-bar { background: rgba(255,255,255,.15); border-radius: 20px; padding: 8px 24px; display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; }
+.count-bar .num { font-size: 30px; font-weight: 800; }
 .count-bar .label { font-size: 14px; opacity: .9; }
-
-.shop-group { background: #fff; border-radius: 12px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
-.shop-group h3 { padding: 12px 16px; background: #fafafa; font-size: 15px; border-bottom: 1px solid #eee; display:flex; align-items:center; gap:8px; }
-
-/* Dish card with image */
-.dish-item { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #f0f0f0; }
-.dish-item:last-child { border-bottom: none; }
-.dish-item .num { color: #999; font-size: 12px; min-width: 22px; flex-shrink:0; }
-.dish-item .dish-img { width: 72px; height: 48px; border-radius: 6px; object-fit: cover; background: #f0f0f0; flex-shrink: 0; border:1px solid #eee; }
-.dish-item .name { font-weight: 600; font-size: 14px; }
-.dish-item .remove { margin-left: auto; cursor: pointer; color: #e74c3c; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fdd; background: #fff5f5; flex-shrink: 0; }
 
 .actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 .btn { padding: 10px 24px; border-radius: 10px; border: none; font-size: 14px; cursor: pointer; font-weight: 600; }
 .btn-primary { background: #c0392b; color: #fff; }
 .btn-primary:hover { background: #a93226; }
 .btn-secondary { background: #fff; color: #666; border: 1px solid #ddd; }
-.btn-secondary:hover { background: #f5f5f5; }
-.count-badge { background: #c0392b; color: #fff; padding: 1px 10px; border-radius: 12px; font-size: 12px; margin-left: 6px; }
-.empty { text-align: center; padding: 60px 20px; color: #bbb; }
+
+/* Shop section */
+.shop-group { background: #fff; border-radius: 16px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+.shop-group h3 { padding: 16px 20px; background: #fafafa; font-size: 16px; border-bottom: 1px solid #eee; display:flex; align-items:center; gap:8px; }
+.shop-group h3 .count-badge { background: #c0392b; color: #fff; padding: 1px 10px; border-radius: 12px; font-size: 12px; margin-left: 6px; }
+
+/* Dish grid - same as report pages */
+.dish-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 16px 20px; }
+.dish-card { background: #fff; border: 1px solid #eee; border-radius: 10px; overflow: hidden; transition: transform .15s; position:relative; }
+.dish-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.dish-card .img-wrap { width: 100%; aspect-ratio: 1.54; background: #f5f5f5; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.dish-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.dish-card .info { padding: 8px 10px; }
+.dish-card .dish-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dish-card .shop-name { font-size: 11px; color: #999; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dish-card .remove { position:absolute; top:6px; right:6px; width:24px; height:24px; border-radius:50%; background:rgba(255,255,255,.9); border:1px solid #fdd; color:#e74c3c; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.dish-card .num { position:absolute; top:6px; left:6px; background:rgba(0,0,0,.5); color:#fff; padding:1px 8px; border-radius:10px; font-size:11px; }
+
+.empty { text-align: center; padding: 80px 20px; color: #bbb; }
 .empty .icon { font-size: 48px; margin-bottom: 10px; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 
 @media (max-width: 768px) {
   body { padding: 10px; }
-  .header { padding: 20px 16px; }
-  .header h1 { font-size: 20px; }
-  .dish-item { gap: 8px; padding: 8px 12px; }
-  .dish-item .dish-img { width: 56px; height: 38px; }
-  .dish-item .name { font-size: 13px; }
-  .actions { gap: 6px; }
-  .btn { padding: 8px 14px; font-size: 13px; }
-  .count-bar .num { font-size: 22px; }
+  .header { padding: 24px 16px; }
+  .dish-grid { grid-template-columns: repeat(3,1fr); gap: 8px; padding: 12px 14px; }
+  .dish-card .dish-name { font-size: 12px; }
 }
 
-/* PDF export layout */
-#pdf-content { display: none; }
 @media print {
   body { background: #fff; padding: 0; }
-  .header { background: #c0392b !important; -webkit-print-color-adjust: exact; padding: 20px; border-radius: 0; }
-  .actions, .remove, .back, .count-bar { display: none !important; }
+  .header { background: #c0392b !important; -webkit-print-color-adjust: exact; }
+  .actions, .remove, .back { display: none !important; }
   .shop-group { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
-  .dish-item { break-inside: avoid; }
-  .dish-item .dish-img { -webkit-print-color-adjust: exact; }
+  .dish-card { break-inside: avoid; }
+  .dish-card .img-wrap img { -webkit-print-color-adjust: exact; }
 }
 </style>
 </head>
@@ -71,7 +67,7 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 <h1>📋 菜品研究方向清单</h1>
 <div class="count-bar">
 <span class="num" id="countNum">0</span>
-<span class="label">道菜已收藏 · 导出PDF给大厨研发</span>
+<span class="label">道菜可导出PDF给大厨研发</span>
 </div>
 <div>
 <a class="back" href="index.html">← 返回首页</a>
@@ -81,11 +77,9 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 <div id="content"></div>
 
 <div class="footer">
-<p>仙味楼 R&D 助手 · 点击菜品旁的 ☆ 收藏 · 导出PDF给后厨</p>
+<p>仙味楼 R&D 助手 · 点击菜品上的 ☆ 收藏 · 导出PDF</p>
 </div>
 </div>
-
-<div id="loading" style="display:none;text-align:center;padding:40px;color:#999">⏳ 正在生成PDF...</div>
 
 <script>
 function loadList() {
@@ -102,15 +96,15 @@ function render() {
   countNum.textContent = list.length;
 
   if (list.length === 0) {
-    content.innerHTML = '<div class="empty"><div class="icon">📭</div><p>研究清单还是空的</p><p style="font-size:13px;margin-top:6px;color:#999">去各分类报告 <span style="color:#f5a623">☆</span> 收藏菜品</p></div>';
+    content.innerHTML = '<div class="empty"><div class="icon">📭</div><p style="font-size:16px;margin-bottom:6px">研究清单还是空的</p><p style="color:#999;font-size:13px">去各分类报告点击菜品上的 <span style="color:#f5a623">☆</span> 收藏</p></div>';
     return;
   }
 
+  // Group by shop
   const grouped = {};
   list.forEach(item => {
-    const key = item.shop;
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(item);
+    if (!grouped[item.shop]) grouped[item.shop] = [];
+    grouped[item.shop].push(item);
   });
 
   let html = '<div class="actions">';
@@ -120,31 +114,33 @@ function render() {
 
   let num = 1;
   Object.entries(grouped).forEach(([shop, dishes]) => {
-    html += `<div class="shop-group"><h3>🏪 ${shop} <span class="count-badge">${dishes.length}</span></h3>`;
+    html += `<div class="shop-group"><h3>🏪 ${shop} <span class="count-badge">${dishes.length}</span></h3><div class="dish-grid">`;
     dishes.forEach(item => {
-      const imgHtml = item.img
-        ? `<img class="dish-img" src="${item.img}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 60%22><rect width=%22100%22 height=%2260%22 fill=%22%23f0f0f0%22/><text x=%2250%22 y=%2235%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2220%22>🍽️</text></svg>'">`
-        : `<img class="dish-img" src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 60%22><rect width=%22100%22 height=%2260%22 fill=%22%23f0f0f0%22/><text x=%2250%22 y=%2235%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2220%22>🍽️</text></svg>">`;
-      const shopSafe = shop.replace(/'/g, "\\'");
-      const dishSafe = item.dish.replace(/'/g, "\\'");
-      html += `<div class="dish-item">
-        <span class="num">${num}.</span>
-        ${imgHtml}
-        <span class="name">${item.dish}</span>
-        <span class="remove" onclick="removeDish('${shopSafe}','${dishSafe}')">✕</span>
+      const placeholdersvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 130'%3E%3Crect width='200' height='130' fill='%23f0f0f0'/%3E%3Ctext x='100' y='70' text-anchor='middle' fill='%23ccc' font-size='30'%3E🍽️%3C/text%3E%3C/svg%3E";
+      const imgSrc = item.img || placeholdersvg;
+      html += `<div class="dish-card">
+        <span class="num">${num}</span>
+        <div class="img-wrap"><img src="${imgSrc}" loading="lazy" onerror="this.src='${placeholdersvg}'"></div>
+        <div class="info">
+          <div class="dish-name">${item.dish}</div>
+          <div class="shop-name">${shop}</div>
+        </div>
+        <span class="remove" onclick="removeItem('${shop.replace(/'/g, "\\'")}','${item.dish.replace(/'/g, "\\'")}')">✕</span>
       </div>`;
       num++;
     });
-    html += '</div>';
+    html += '</div></div>';
   });
+
   content.innerHTML = html;
 }
 
-function removeDish(shop, dish) {
+function removeItem(shop, dish) {
   const list = loadList();
   const idx = list.findIndex(item => item.shop === shop && item.dish === dish);
   if (idx >= 0) { list.splice(idx, 1); saveList(list); render(); }
 }
+
 function clearAll() {
   if (confirm('清空研究清单？')) { saveList([]); render(); }
 }
@@ -153,10 +149,6 @@ function exportPDF() {
   const list = loadList();
   if (list.length === 0) { alert('清单为空'); return; }
 
-  const el = document.getElementById('loading');
-  el.style.display = 'block';
-
-  // Build the PDF HTML
   const grouped = {};
   list.forEach(item => {
     if (!grouped[item.shop]) grouped[item.shop] = [];
@@ -164,44 +156,39 @@ function exportPDF() {
   });
 
   let pdfHtml = `
-    <div style="padding:30px;font-family:sans-serif">
+    <div style="padding:30px;font-family:sans-serif;max-width:1000px;margin:0 auto">
     <h1 style="color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:10px">🍜 仙味楼 · 菜品研究方向清单</h1>
     <p style="color:#888;font-size:13px">生成日期：${new Date().toLocaleDateString('zh-CN')} · 共 ${list.length} 道菜品</p>
     <hr style="border:none;border-top:1px solid #eee;margin:16px 0">`;
 
   let num = 1;
   Object.entries(grouped).forEach(([shop, dishes]) => {
-    pdfHtml += `<h2 style="font-size:16px;margin:16px 0 8px">🏪 ${shop}</h2>`;
+    pdfHtml += `<h2 style="font-size:16px;margin:20px 0 10px;color:#333">🏪 ${shop}</h2><div style="display:flex;flex-wrap:wrap;gap:10px">`;
     dishes.forEach(item => {
-      const imgTag = item.img
-        ? `<img src="${item.img}" style="width:60px;height:40px;border-radius:4px;object-fit:cover;border:1px solid #eee">`
-        : `<span style="font-size:24px">🍽️</span>`;
-      pdfHtml += `<div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid #f0f0f0">
-        <span style="color:#999;min-width:22px">${num}.</span>
-        ${imgTag}
-        <span style="font-weight:600">${item.dish}</span>
-        <span style="color:#888;font-size:12px;margin-left:auto">${shop}</span>
+      const placeholdersvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 130'%3E%3Crect width='200' height='130' fill='%23f0f0f0'/%3E%3Ctext x='100' y='70' text-anchor='middle' fill='%23ccc' font-size='30'%3E🍽️%3C/text%3E%3C/svg%3E";
+      const imgSrc = item.img || placeholdersvg;
+      pdfHtml += `<div style="width:170px;border:1px solid #eee;border-radius:8px;overflow:hidden;margin-bottom:8px">
+        <img src="${imgSrc}" style="width:100%;aspect-ratio:1.54;object-fit:cover;display:block">
+        <div style="padding:6px 8px">
+          <div style="font-weight:600;font-size:12px">${num}. ${item.dish}</div>
+          <div style="color:#888;font-size:10px;margin-top:2px">${shop}</div>
+        </div>
       </div>`;
       num++;
     });
+    pdfHtml += `</div>`;
   });
 
-  pdfHtml += `<hr style="border:none;border-top:2px solid #c0392b;margin:20px 0 10px">
+  pdfHtml += `<hr style="border:none;border-top:2px solid #c0392b;margin:30px 0 10px">
     <p style="text-align:center;color:#999;font-size:11px">仙味楼 R&D 助手 · 数据来源：大众点评</p></div>`;
 
-  // Open in new window and print to PDF
   const win = window.open('', '_blank');
   if (win) {
     win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究方向清单</title></head><body>${pdfHtml}</body></html>`);
     win.document.close();
-    setTimeout(() => {
-      win.focus();
-      win.print();
-      el.style.display = 'none';
-    }, 500);
+    setTimeout(() => { win.focus(); win.print(); }, 500);
   } else {
     alert('请允许弹出窗口');
-    el.style.display = 'none';
   }
 }
 
