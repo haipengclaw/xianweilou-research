@@ -176,7 +176,7 @@ function toggleDish(btn, dishName, shopName, imgUrl) {{
     btn.classList.remove('selected');
     btn.textContent = '☆';
   }} else {{
-    list.push({{shop: shopName, dish: dishName}});
+    list.push({{shop: shopName, dish: dishName, img: imgUrl || ''}});
     btn.classList.add('selected');
     btn.textContent = '★';
   }}
