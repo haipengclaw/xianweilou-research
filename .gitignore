@@ -1,0 +1,6 @@
+node_modules/
+config.json
+*.log
+data/dianping_cookies.json
+data/xiaohongshu_cookies.json
+.gstack/

@@ -363,7 +363,7 @@ for idx, name in enumerate(shop_names):
 
 html_parts.append('''
 <div class="footer">
-<p>胡叨叨 R&D 助手 · 大众点评本帮菜米其林研究 · 2026-06-22</p>
+<p>仙味楼 R&D 助手 · 大众点评本帮菜米其林研究 · 2026-06-22</p>
 <p style="margin-top:4px">数据来源：大众点评 · 仅供菜品研发参考</p>
 </div>
 </div>

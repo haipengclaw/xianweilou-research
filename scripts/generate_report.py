@@ -359,7 +359,7 @@ for i, r in enumerate(restaurants):
 html += '''
 </div>
 <div class="footer">
-<p>胡叨叨 R&D 助手 · 上海本帮菜米其林餐厅研究</p>
+<p>仙味楼 R&D 助手 · 上海本帮菜米其林餐厅研究</p>
 <p style="margin-top:4px">数据来源：大众点评 · 仅供菜品研发参考</p>
 </div>
 </body>
