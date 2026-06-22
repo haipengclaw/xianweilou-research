@@ -268,7 +268,7 @@ window.addEventListener('load', function() {{
 <div class="img-wrap">{img_tag}</div>
 <div class="info">
 <div class="dish-name"><span class="rank">{j+1}</span>{d["name"]}</div>
-<div class="dish-count">{hot} <span class="select-btn" data-dish="{dish_escaped}" data-shop="{name_escaped}" onclick="toggleDish(this,\'{dish_escaped}\',\'{name_escaped}\')" style="cursor:pointer;margin-left:6px;font-size:14px">☆</span></div>
+<div class="dish-count">{hot} <span class="select-btn" data-dish="{dish_escaped}" data-shop="{name_escaped}" data-img="{d["img"]}" onclick="toggleDish(this,\'{dish_escaped}\',\'{name_escaped}\',\'{d["img"]}\')" style="cursor:pointer;margin-left:6px;font-size:14px">☆</span></div>
 </div>
 </div>'''
             html += '\n</div></div>'
