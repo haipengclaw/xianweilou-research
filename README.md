@@ -1,4 +1,4 @@
-# 🐟 胡叨叨 · 新菜研发 AI 助手
+# 🐟 仙味楼 · 新菜研发 AI 助手
 
 > **Hudadao R&D Assistant** — 海鲜小馆与宁波台州菜创新 · 高质平价
 >
@@ -122,5 +122,5 @@ npm run research
 ---
 
 <div align="center">
-  <sub>Made with ❤️ for 胡叨叨 · 海鲜小馆与宁波台州菜创新</sub>
+  <sub>Made with ❤️ for 仙味楼 · 海鲜小馆与宁波台州菜创新</sub>
 </div>
