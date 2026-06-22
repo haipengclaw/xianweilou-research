@@ -46,7 +46,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 
 @media(max-width:768px){.dish-grid{grid-template-columns:repeat(1,1fr);gap:10px;padding:12px 14px}}
 
-@media print{body{background:#fff;padding:0}.header{background:#c0392b!important;-webkit-print-color-adjust:exact}.actions,.remove,.back,.count-bar{display:none!important}.shop-group{box-shadow:none;border:1px solid #ddd;break-inside:avoid}}
+@media print{body{background:#fff;padding:10px}.header{background:#c0392b!important;-webkit-print-color-adjust:exact;padding:20px;margin-bottom:16px}.header h1{font-size:20px}.count-bar .num{font-size:24px}.actions,.remove,.back{display:none!important}.shop-group{box-shadow:none;border:1px solid #ddd;break-inside:avoid;margin-bottom:12px}.dish-grid{grid-template-columns:repeat(4,1fr)!important;gap:8px}.dish-card{break-inside:avoid;border:1px solid #eee}.dish-card .img-wrap img{-webkit-print-color-adjust:exact}.footer{display:none}}
 </style>
 </head>
 <body>
@@ -89,38 +89,8 @@ function clearAll(){saveList([]);render()}
 function pdf(){
   const list=loadList();
   if(!list.length){alert('清单为空');return}
-  const g={};list.forEach(i=>{if(!g[i.shop])g[i.shop]=[];g[i.shop].push(i)});
-  let h=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究清单</title>
-<style>body{font-family:sans-serif;padding:20px;max-width:800px;margin:0 auto;color:#333}
-h1{color:#c0392b;font-size:20px;border-bottom:3px solid #c0392b;padding-bottom:8px}
-.shop{font-size:15px;margin:14px 0 6px;color:#333}
-.d{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #eee}
-.d img{width:60px;height:40px;object-fit:cover;border-radius:4px;border:1px solid #eee}
-.d .nm{font-weight:600;font-size:13px}.d .sp{color:#888;font-size:11px;margin-left:auto}
-.foot{text-align:center;color:#999;font-size:10px;margin-top:16px}
-@media print{body{padding:0}.d{break-inside:avoid}}
-</style></head><body>
-<h1>🍜 仙味楼 · 菜品研究方向清单</h1>
-<p style="color:#888;font-size:12px">${new Date().toLocaleDateString('zh-CN')} · 共${list.length}道菜</p>`;
-  let n=1;
-  const imgs=[];
-  Object.entries(g).forEach(([shop,items])=>{
-    h+=`<div class="shop">🏪 ${shop}</div>`;
-    items.forEach(i=>{
-      const svg='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 130%22%3E%3Crect width=%22200%22 height=%22130%22 fill=%22%23f5f5f5%22/%3E%3Ctext x=%22100%22 y=%2270%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2224%22%3E🍽️%3C/text%3E%3C/svg%3E';
-      const url=i.img||svg;
-      h+=`<div class="d"><span style="color:#999;min-width:20px">${n}.</span><img src="${url}" onerror="this.src='${svg}'"><span class="nm">${i.dish}</span><span class="sp">${shop}</span></div>`;
-      if(i.img)imgs.push(i.img);
-      n++});
-  });
-  h+=`<div class="foot">仙味楼 R&D 助手</div></body></html>`;
-
-  const w=window.open('','_blank');
-  if(!w){alert('请允许弹出窗口');return}
-  w.document.write(h);
-  w.document.close();
-  // Wait for images to load then print
-  setTimeout(()=>{w.focus();w.print()},1500);
+  // Print the current page - images already loaded
+  window.print();
 }
 
 render();
