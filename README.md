@@ -1,6 +1,6 @@
 # 🐟 仙味楼 · 新菜研发 AI 助手
 
-> **Hudadao R&D Assistant** — 海鲜小馆与宁波台州菜创新 · 高质平价
+> **仙味楼 RHudadao R&D AssistantD 助手** — 上海本帮菜 · 江浙菜 菜品研发数据库
 >
 > 帮助你持续采集创新灵感，驱动菜品研发
 
@@ -72,7 +72,6 @@ npm run research
 
 **创意做法类：**
 - 「海鲜 神仙吃法」「海鲜 创意做法 家常」
-- 「台州菜 创新做法」「宁波 传统菜 新做」
 
 **平价高级感类：**
 - 「平价 高级感 美食DIY」「30元 做出餐厅感 摆盘」
@@ -122,5 +121,5 @@ npm run research
 ---
 
 <div align="center">
-  <sub>Made with ❤️ for 仙味楼 · 海鲜小馆与宁波台州菜创新</sub>
+  <sub>Made with ❤️ for 仙味楼 · 上海本帮菜 Made with ❤️ for 仙味楼 · 海鲜小馆与宁波台州菜创新</sub> 江浙菜研发
 </div>
