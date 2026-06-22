@@ -142,7 +142,7 @@ function removeItem(shop, dish) {
 }
 
 function clearAll() {
-  if (confirm('清空研究清单？')) { saveList([]); render(); }
+  saveList([]); render();
 }
 
 function exportPDF() {
