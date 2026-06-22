@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本帮菜米其林餐厅 · 菜品研究报告（原型）</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; }
+.shop-card { background: #fff; border-radius: 16px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+.header { background: linear-gradient(135deg, #c0392b, #e74c3c); color: #fff; padding: 30px 24px; border-radius:16px; margin-bottom:20px; }
+.header h1 { font-size: 22px; margin-bottom: 4px; }
+.header .desc { font-size: 13px; opacity: 0.85; margin-top: 6px; }
+.shop-banner { padding: 20px 24px; border-bottom: 1px solid #eee; background: #fafafa; }
+.shop-banner h2 { font-size: 20px; font-weight: 700; }
+.shop-banner .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 13px; color: #666; align-items: center; }
+.shop-banner .stars { color: #f5a623; font-size: 16px; }
+.shop-banner .score { font-weight: 700; font-size: 18px; }
+.score-high { color: #27ae60; }
+.score-mid { color: #f39c12; }
+.price-tag { color: #c0392b; font-weight: 700; font-size: 18px; }
+.award-badge { display: inline-block; background: #c0392b; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 11px; }
+.area-badge { background: #eef; color: #446; padding: 2px 8px; border-radius: 8px; font-size: 11px; }
+.score-grid { display: flex; gap: 12px; padding: 12px 24px; border-bottom: 1px solid #eee; flex-wrap: wrap; }
+.score-item { flex: 1; min-width: 60px; text-align: center; }
+.score-item .val { font-size: 18px; font-weight: 700; }
+.score-item .lbl { font-size: 11px; color: #999; }
+.section { padding: 16px 24px; border-bottom: 1px solid #eee; }
+.section:last-child { border-bottom: none; }
+.section h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.section h3 .badge { background: #c0392b; color: #fff; font-size: 11px; padding: 1px 8px; border-radius: 10px; }
+.dish-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.dish-card { background: #fff; border: 1px solid #eee; border-radius: 10px; overflow: hidden; transition: transform 0.15s; }
+.dish-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.dish-card .img-wrap { width: 100%; aspect-ratio: 1.54; background: #f5f5f5; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.dish-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.dish-card .img-wrap .no-img { color: #ddd; font-size: 36px; }
+.dish-card .info { padding: 8px 10px; }
+.dish-card .dish-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dish-card .dish-count { font-size: 11px; color: #999; }
+.dish-card .rank { display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center; background: #c0392b; color: #fff; font-size: 11px; border-radius: 50%; margin-right: 4px; }
+.dish-card:nth-child(n+4) .rank { background: #e67e22; }
+.dish-card:nth-child(n+7) .rank { background: #95a5a6; }
+.kw-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.kw-tag { background: #fef3f2; color: #c0392b; padding: 5px 12px; border-radius: 16px; font-size: 13px; border: 1px solid #fdd; white-space: nowrap; }
+.kw-tag .cnt { color: #e74c3c; font-weight: 700; margin-left: 4px; }
+
+.review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 768px) { .dish-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🍜 本帮菜米其林餐厅 · 菜品研究原型</h1>
+  <div class="desc">数据来源：大众点评 · 2026-06-22 · 菜品图片来自"网友推荐"推荐菜缩略图</div>
+</div>
+
+<!-- ============ 老兴鲜 ============ -->
+<div class="shop-card">
+  <div class="shop-banner">
+    <h2>🏆 老兴鲜（黄浦店）</h2>
+    <div class="meta">
+      <span class="stars">★★★★★</span>
+      <span class="score score-high">4.9</span>
+      <span>|</span>
+      <span class="price-tag">¥235/人</span>
+      <span>| 本帮菜 | 📍 淮海路</span>
+      <span class="award-badge">🏅 2026上榜一钻餐厅</span>
+    </div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item"><div class="val score-high">4.9</div><div class="lbl">口味</div></div>
+    <div class="score-item"><div class="val score-high">4.9</div><div class="lbl">环境</div></div>
+    <div class="score-item"><div class="val score-high">4.9</div><div class="lbl">服务</div></div>
+    <div class="score-item"><div class="val">17,104</div><div class="lbl">评价数</div></div>
+    <div class="score-item"><div class="val" style="font-size:13px">淮海中路918号</div><div class="lbl">地址</div></div>
+    <div class="score-item"><div class="val" style="font-size:13px">1号线陕西南路2口</div><div class="lbl">地铁</div></div>
+  </div>
+
+  <div class="section">
+    <h3>🍽️ 推荐菜 Top 10 <span class="badge">图片来自网友推荐</span></h3>
+    <div class="dish-grid">
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/EqhtjtJ3eDP7z1i8oHDrHCD3wXibhOH5gsK-y9YGuUMdvtM1-my-fcr4D_rZXr3hrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">1</span>白烧鳝背</div><div class="dish-count">🔥 533人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/fcI4T-LKdiboCvRtt82NM0VOyYoRHn0SlfNLcEfkEckmGVzKihBHmIPXEs1dq4FirN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">2</span>秘制熏东海小白鲳</div><div class="dish-count">🔥 277人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/i3KJTsP_7gIrJVmaZOLZ-sDLR2XmoJArZ5FBKA6n1VzFiQxTaXLzdOMprdkUI1qprN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">3</span>现包鲜虾春卷</div><div class="dish-count">🔥 197人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/l5xJmwEr7hQJB_F4AALPn2n84n_K76SR-jEo2RphnFtmYHZdSeUjkPyh5-nTQ1W5rN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">4</span>老兴鲜全家福</div><div class="dish-count">159人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/sj03W1Zjf5QougsSoFqAyNVmJlsQ9J6HyMb53szvAbxCPkWLDk0eI9B8Xgm4UCmmrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">5</span>浦东特色白斩鸡</div><div class="dish-count">129人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/Negy_dDSXwoE6JSckwYJAxtNcOaTbWNsafTN4UY9oRsrCjJQd8ql1kYFLUFrR_WIrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">6</span>咸菜鲜笋炒目鱼</div><div class="dish-count">111人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/z5o-OSIfMnNetIaKbl42_yipRMzrkq-fIX50rsAPs89bABLJ-NMpmWgYt00SYGDorN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">7</span>带骨鸡丁炒八宝辣酱</div><div class="dish-count">80人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/amdFIyLL7Hkn3gywwmfBZnfcv13kkUxNGH0GOpVcbkQfe4ESXuS__HTizXbvb3P8rN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">8</span>初一锅巴</div><div class="dish-count">74人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/FJ3vdowq6us3hVhG8Toa1MiqCJNK1JDqORrRFzAhT4CeUTpyRvj2azXvAQnE7eVvrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">9</span>清炒手剥河虾仁</div><div class="dish-count">70人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/tIXJf_zbcl_pe-6hJoPkjrnCgiJfDY8qG5a9CV3EA8nbcpKhwzrhWJCusQ1RXeMVrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">10</span>糖醋排骨</div><div class="dish-count">68人推荐</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>💬 评价关键词 <span class="badge">共11个</span></h3>
+    <div class="kw-grid">
+      <span class="kw-tag">试试白烧鳝背 <span class="cnt">2781</span></span>
+      <span class="kw-tag">白烧鳝背招牌菜 <span class="cnt">2609</span></span>
+      <span class="kw-tag">不愧是本帮菜馆 <span class="cnt">1882</span></span>
+      <span class="kw-tag">店内环境整洁 <span class="cnt">1527</span></span>
+      <span class="kw-tag">白烧鳝背搭配菜 <span class="cnt">1477</span></span>
+      <span class="kw-tag">套餐海鲜新鲜 <span class="cnt">1286</span></span>
+      <span class="kw-tag">提前预约可避免排队 <span class="cnt">214</span></span>
+      <span class="kw-tag">送生日面和果盘 <span class="cnt">130</span></span>
+      <span class="kw-tag">停车建议 <span class="cnt">101</span></span>
+      <span class="kw-tag">包厢最低消费 <span class="cnt">54</span></span>
+      <span class="kw-tag">途中会耐心讲 <span class="cnt">10</span></span>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ 蘭心餐厅 ============ -->
+<div class="shop-card">
+  <div class="shop-banner">
+    <h2>🥇 蘭心餐厅（进贤路店）</h2>
+    <div class="meta">
+      <span class="stars">★★★★☆</span>
+      <span class="score score-mid">3.7</span>
+      <span>|</span>
+      <span class="price-tag">¥91/人</span>
+      <span>| 本帮菜 | 📍 淮海路</span>
+      <span class="area-badge">🏆 淮海路本帮菜热门榜第8名</span>
+    </div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item"><div class="val score-mid">3.9</div><div class="lbl">口味</div></div>
+    <div class="score-item"><div class="val score-mid">3.5</div><div class="lbl">环境</div></div>
+    <div class="score-item"><div class="val score-mid">3.6</div><div class="lbl">服务</div></div>
+    <div class="score-item"><div class="val">11,591</div><div class="lbl">评价数</div></div>
+    <div class="score-item"><div class="val" style="font-size:13px">进贤路130号</div><div class="lbl">地址</div></div>
+    <div class="score-item"><div class="val" style="font-size:13px">13号线淮海中路3口</div><div class="lbl">地铁</div></div>
+  </div>
+
+  <div class="section">
+    <h3>🍽️ 推荐菜 Top 10 <span class="badge">图片来自网友推荐</span></h3>
+    <div class="dish-grid">
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/P6vc12xvEyBg8nQbQKtiCZF2MpLSfQbA1Q4C18bnkzA9thrOHKCZqVapCs44Fv_zrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">1</span>草头</div><div class="dish-count">🔥 57人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/mi2lVgpwbj8h2eqYCq4eauNcadq1sNh61qFC_q8c9M7AxzdekhTcSA766YY2lur4rN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">2</span>酱爆猪肝</div><div class="dish-count">🔥 32人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/5-wkPmRAV-CXPNqr1JrieAKc-AQCbxD-M2G1wEHekcf_m4Yu_x3NrizsC_tDjGgkrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">3</span>红烧肉</div><div class="dish-count">🔥 32人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/DYoZh0XFEVtGlPLVLJcWvqZMaML55oGEaFMKYyn5I60SP1Q_fRUT3JmDGt6bU4htrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">4</span>油爆虾</div><div class="dish-count">31人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/tUV4BjlUOibOxH9Sx6KGBZJGv-G6mhfF4I3Fogd5D_rUstB2DXDqT2qGlFI0FD13rN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">5</span>响油鳝丝</div><div class="dish-count">24人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/QKgIpsImofKQQ-x68POpLk7mhmYVpOGeRm-02bqetZFdcfOP9aI9-XQw8T5ZHFEyrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">6</span>酱鸭</div><div class="dish-count">18人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/cejyuJMitUfJkI2S3TyXVS5CfMjqcOXhjtNohZmmN7pJ1d-UaiACIbCESM9tlXdTrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">7</span>腌鲜汤</div><div class="dish-count">17人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/kvrWQ_tojO3ot4xB9D2gA1Gg21epFYoEtvR9IfefSMkjB9PnpfRGfwdf-EZnI0PtrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">8</span>椒盐排条</div><div class="dish-count">8人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/-bi3mov3pBkQaV3_pKEa27yMN9o6YLd3bEZRgHUnkP94uOhzbusutxhaYzmPi5YPrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">9</span>干烧鲳鱼</div><div class="dish-count">6人推荐</div></div>
+      </div>
+      <div class="dish-card">
+        <div class="img-wrap"><img src="https://qcloud.dpfile.com/pc/F8Z_a2YlloMcbdsms_heQyAaU2L0_CXXlPJ8R_iD7u2apVdUVA3Vqhy5e0GNVh2HrN2OTQBCkke2ZGfpZ5SDFFEuLYk00OmSS1IdNpm8K8sG4JN9RIm2mTKcbLtc2o2vmIU_8ZGOT1OjpJmLxG6urQ.jpg" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🍽️</div>'"></div>
+        <div class="info"><div class="dish-name"><span class="rank">10</span>萝卜排骨汤</div><div class="dish-count">4人推荐</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>💬 评价关键词 <span class="badge">共10个</span></h3>
+    <div class="kw-grid">
+      <span class="kw-tag">人到齐后排队入座 <span class="cnt">1188</span></span>
+      <span class="kw-tag">必点菜品 <span class="cnt">422</span></span>
+      <span class="kw-tag">上海本帮菜馆 <span class="cnt">237</span></span>
+      <span class="kw-tag">本帮菜招牌红烧肉 <span class="cnt">209</span></span>
+      <span class="kw-tag">家常菜有年代感 <span class="cnt">204</span></span>
+      <span class="kw-tag">排条酥脆多汁 <span class="cnt">146</span></span>
+      <span class="kw-tag">本帮菜现点现做 <span class="cnt">38</span></span>
+      <span class="kw-tag">繁花夜东京前身 <span class="cnt">13</span></span>
+      <span class="kw-tag">提供宵夜打包服务 <span class="cnt">4</span></span>
+      <span class="kw-tag">环境一览无余 <span class="cnt">3</span></span>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div class="header" style="background:#555;text-align:center">
+  <p style="font-size:14px">仙味楼 R&D 助手 · 大众点评本帮菜米其林研究 · 2026-06-22</p>
+</div>
+</div>
+</body>
+</html>
