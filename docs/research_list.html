@@ -88,8 +88,15 @@ function clearAll(){saveList([]);render()}
 function pdf(){
   const list=loadList();
   if(!list.length){alert('清单为空');return}
-  // Print the current page - images already loaded
-  window.print();
+  // Show hint then trigger print
+  const tip = document.createElement('div');
+  tip.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 20px;border-radius:10px;z-index:9999;font-size:14px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.3)';
+  tip.textContent = '🖨️ 请选择打印机/保存为PDF';
+  document.body.appendChild(tip);
+  setTimeout(()=>{
+    window.print();
+    setTimeout(()=>{document.body.removeChild(tip)},2000);
+  },300);
 }
 
 render();
