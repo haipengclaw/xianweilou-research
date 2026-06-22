@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <title>仙味楼 · 菜品研究方向清单</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;padding:20px}
@@ -88,17 +89,36 @@ function pdf(){
   const list=loadList();
   if(!list.length){alert('清单为空');return}
   const g={};list.forEach(i=>{if(!g[i.shop])g[i.shop]=[];g[i.shop].push(i)});
-  let h=`<div style="padding:30px;font-family:sans-serif;max-width:1000px;margin:0 auto"><h1 style="color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:10px">🍜 仙味楼 菜品研究方向清单</h1><p style="color:#888;font-size:13px">${new Date().toLocaleDateString('zh-CN')} · 共${list.length}道菜</p>`;
+  let h=`<div id="pdfContent" style="padding:20px;font-family:sans-serif;max-width:800px;margin:0 auto"><h1 style="color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:8px;font-size:20px">🍜 仙味楼 · 菜品研究方向清单</h1><p style="color:#888;font-size:12px">${new Date().toLocaleDateString('zh-CN')} · 共${list.length}道菜</p>`;
   let n=1;
   Object.entries(g).forEach(([shop,items])=>{
-    h+=`<h2 style="font-size:16px;margin:16px 0 8px;color:#333">🏪 ${shop}</h2><div style="display:flex;flex-wrap:wrap;gap:10px">`;
+    h+=`<h2 style="font-size:15px;margin:14px 0 6px;color:#333">🏪 ${shop}</h2><table style="width:100%;border-collapse:collapse">`;
     items.forEach(i=>{
       const svg='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 130%22%3E%3Crect width=%22200%22 height=%22130%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%22100%22 y=%2270%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22%3E🍽️%3C/text%3E%3C/svg%3E';
-      h+=`<div style="width:320px;border:1px solid #eee;border-radius:8px;overflow:hidden;margin-bottom:8px"><img src="${i.img||svg}" style="width:100%;aspect-ratio:1.5;object-fit:cover;display:block"><div style="padding:8px"><div style="font-weight:600;font-size:13px">${n}. ${i.dish}</div><div style="color:#888;font-size:11px;margin-top:2px">${shop}</div></div></div>`;
+      h+=`<tr><td style="padding:8px 4px;border-bottom:1px solid #eee;vertical-align:middle;width:40px;color:#999;font-size:12px">${n}.</td><td style="padding:8px 4px;border-bottom:1px solid #eee;width:60px"><img src="${i.img||svg}" style="width:60px;height:40px;object-fit:cover;border-radius:4px"></td><td style="padding:8px 4px;border-bottom:1px solid #eee;vertical-align:middle"><div style="font-weight:600;font-size:14px">${i.dish}</div><div style="color:#888;font-size:11px">${shop}</div></td></tr>`;
       n++});
-    h+='</div>'});
-  h+='<hr style="border:none;border-top:2px solid #c0392b;margin:20px 0"><p style="text-align:center;color:#999;font-size:11px">仙味楼 R&D 助手</p></div>';
-  const w=window.open('','_blank');if(w){w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究清单</title></head><body>'+h+'</body></html>');w.document.close();setTimeout(()=>{w.focus();w.print()},500)}else alert('请允许弹出窗口')
+    h+=`</table>`});
+  h+=`<hr style="border:none;border-top:2px solid #c0392b;margin:20px 0"><p style="text-align:center;color:#999;font-size:11px">仙味楼 R&D 助手</p></div>`;
+
+  // Use html2pdf if available, fallback to window.print
+  if(typeof html2pdf !== 'undefined'){
+    const el = document.createElement('div');
+    el.innerHTML = h;
+    document.body.appendChild(el);
+    el.style.position = 'fixed'; el.style.left = '-9999px'; el.style.top = '0';
+    document.getElementById('loading').style.display = 'block';
+    html2pdf().set({
+      margin: [10,10,10,10], filename: '仙味楼_菜品研究方向清单.pdf',
+      html2canvas: {scale:2,useCORS:true}, jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
+    }).from(el).save().then(()=>{
+      document.body.removeChild(el);
+      document.getElementById('loading').style.display = 'none';
+    });
+  } else {
+    const w=window.open('','_blank');
+    if(w){w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究清单</title></head><body>'+h+'</body></html>');w.document.close();setTimeout(()=>{w.focus();w.print()},500)}
+    else alert('请允许弹出窗口');
+  }
 }
 
 render();
