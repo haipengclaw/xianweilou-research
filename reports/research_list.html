@@ -4,26 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>仙味楼 · 菜品研究方向清单</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
 .container { max-width: 800px; margin: 0 auto; }
-.header { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; padding: 40px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
-.header h1 { font-size: 24px; }
-.header .sub { font-size: 13px; opacity: .85; margin-top: 6px; }
-.header .back { display: inline-block; margin-top: 10px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; }
-.header .print-btn { display: inline-block; margin-top: 10px; margin-left: 8px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; cursor: pointer; border: none; }
+
+.header { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; padding: 40px 24px 30px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 4px; }
+.header .back { display: inline-block; margin-top: 8px; padding: 4px 14px; background: rgba(255,255,255,.15); border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; }
+
+/* Big count badge */
+.count-bar { background: rgba(255,255,255,.15); border-radius: 20px; padding: 8px 20px; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
+.count-bar .num { font-size: 28px; font-weight: 800; }
+.count-bar .label { font-size: 14px; opacity: .9; }
+
 .shop-group { background: #fff; border-radius: 12px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
-.shop-group h3 { padding: 14px 18px; background: #fafafa; font-size: 15px; border-bottom: 1px solid #eee; display:flex;align-items:center;gap:8px; }
-.dish-item { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-bottom: 1px solid #f5f5f5; font-size: 14px; }
+.shop-group h3 { padding: 12px 16px; background: #fafafa; font-size: 15px; border-bottom: 1px solid #eee; display:flex; align-items:center; gap:8px; }
+
+/* Dish card with image */
+.dish-item { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #f0f0f0; }
 .dish-item:last-child { border-bottom: none; }
-.dish-item .num { color: #999; font-size: 12px; min-width: 24px; }
-.dish-item .dish-img { width: 48px; height: 32px; border-radius: 4px; object-fit: cover; background: #f0f0f0; flex-shrink: 0; }
-.dish-item .name { font-weight: 600; }
-.dish-item .shop-name { color: #888; font-size: 12px; margin-left: 4px; }
+.dish-item .num { color: #999; font-size: 12px; min-width: 22px; flex-shrink:0; }
+.dish-item .dish-img { width: 72px; height: 48px; border-radius: 6px; object-fit: cover; background: #f0f0f0; flex-shrink: 0; border:1px solid #eee; }
+.dish-item .name { font-weight: 600; font-size: 14px; }
 .dish-item .remove { margin-left: auto; cursor: pointer; color: #e74c3c; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fdd; background: #fff5f5; flex-shrink: 0; }
-.empty { text-align: center; padding: 60px 20px; color: #bbb; }
-.empty .icon { font-size: 48px; margin-bottom: 10px; }
+
 .actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 .btn { padding: 10px 24px; border-radius: 10px; border: none; font-size: 14px; cursor: pointer; font-weight: 600; }
 .btn-primary { background: #c0392b; color: #fff; }
@@ -31,26 +37,31 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 .btn-secondary { background: #fff; color: #666; border: 1px solid #ddd; }
 .btn-secondary:hover { background: #f5f5f5; }
 .count-badge { background: #c0392b; color: #fff; padding: 1px 10px; border-radius: 12px; font-size: 12px; margin-left: 6px; }
+.empty { text-align: center; padding: 60px 20px; color: #bbb; }
+.empty .icon { font-size: 48px; margin-bottom: 10px; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   body { padding: 10px; }
-  .header { padding: 24px 16px; }
+  .header { padding: 20px 16px; }
   .header h1 { font-size: 20px; }
-  .dish-item { padding: 8px 12px; font-size: 13px; flex-wrap: wrap; }
-  .dish-item .dish-img { width: 40px; height: 27px; }
+  .dish-item { gap: 8px; padding: 8px 12px; }
+  .dish-item .dish-img { width: 56px; height: 38px; }
+  .dish-item .name { font-size: 13px; }
   .actions { gap: 6px; }
-  .btn { padding: 8px 16px; font-size: 13px; }
+  .btn { padding: 8px 14px; font-size: 13px; }
+  .count-bar .num { font-size: 22px; }
 }
 
-/* Print style */
+/* PDF export layout */
+#pdf-content { display: none; }
 @media print {
   body { background: #fff; padding: 0; }
-  .header { background: #c0392b !important; -webkit-print-color-adjust: exact; padding: 20px; }
-  .actions, .remove, .back, .print-btn { display: none !important; }
+  .header { background: #c0392b !important; -webkit-print-color-adjust: exact; padding: 20px; border-radius: 0; }
+  .actions, .remove, .back, .count-bar { display: none !important; }
   .shop-group { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
   .dish-item { break-inside: avoid; }
+  .dish-item .dish-img { -webkit-print-color-adjust: exact; }
 }
 </style>
 </head>
@@ -58,24 +69,28 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 <div class="container">
 <div class="header">
 <h1>📋 菜品研究方向清单</h1>
-<div class="sub" id="subtitle">加载中...</div>
+<div class="count-bar">
+<span class="num" id="countNum">0</span>
+<span class="label">道菜已收藏 · 导出PDF给大厨研发</span>
+</div>
+<div>
 <a class="back" href="index.html">← 返回首页</a>
-<button class="print-btn" onclick="window.print()">🖨️ 导出PDF</button>
+</div>
 </div>
 
 <div id="content"></div>
 
 <div class="footer">
-<p>仙味楼 R&D 助手 · 选中的菜品将作为季度研发方向</p>
-<p>💡 在分类报告中点击菜品上的 ☆ 即可收藏到这里</p>
+<p>仙味楼 R&D 助手 · 点击菜品旁的 ☆ 收藏 · 导出PDF给后厨</p>
 </div>
 </div>
+
+<div id="loading" style="display:none;text-align:center;padding:40px;color:#999">⏳ 正在生成PDF...</div>
 
 <script>
 function loadList() {
   return JSON.parse(localStorage.getItem('researchList') || '[]');
 }
-
 function saveList(list) {
   localStorage.setItem('researchList', JSON.stringify(list));
 }
@@ -83,12 +98,11 @@ function saveList(list) {
 function render() {
   const list = loadList();
   const content = document.getElementById('content');
-  const subtitle = document.getElementById('subtitle');
-
-  subtitle.textContent = `共 ${list.length} 道菜品 · 点击 🖨️ 导出PDF`;
+  const countNum = document.getElementById('countNum');
+  countNum.textContent = list.length;
 
   if (list.length === 0) {
-    content.innerHTML = '<div class="empty"><div class="icon">📭</div><p>研究清单还是空的</p><p style="font-size:13px;margin-top:6px;color:#999">去各分类报告页面点击菜品上的 <span style="color:#f5a623">☆</span> 收藏吧</p></div>';
+    content.innerHTML = '<div class="empty"><div class="icon">📭</div><p>研究清单还是空的</p><p style="font-size:13px;margin-top:6px;color:#999">去各分类报告 <span style="color:#f5a623">☆</span> 收藏菜品</p></div>';
     return;
   }
 
@@ -100,30 +114,29 @@ function render() {
   });
 
   let html = '<div class="actions">';
-  html += '<button class="btn btn-primary" onclick="window.print()">🖨️ 导出PDF</button>';
-  html += '<button class="btn btn-secondary" onclick="exportText()">📝 复制文字清单</button>';
-  html += '<button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空全部</button>';
+  html += '<button class="btn btn-primary" onclick="exportPDF()">📄 导出PDF（带图片）</button>';
+  html += '<button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空清单</button>';
   html += '</div>';
 
   let num = 1;
   Object.entries(grouped).forEach(([shop, dishes]) => {
-    html += `<div class="shop-group"><h3>🏪 ${shop} <span class="count-badge">${dishes.length}道</span></h3>`;
+    html += `<div class="shop-group"><h3>🏪 ${shop} <span class="count-badge">${dishes.length}</span></h3>`;
     dishes.forEach(item => {
-      const imgHtml = item.img ? `<img class="dish-img" src="${item.img}" loading="lazy" onerror="this.style.display='none'">` : '<div class="dish-img" style="background:#eee;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:16px">🍽️</div>';
+      const imgHtml = item.img
+        ? `<img class="dish-img" src="${item.img}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 60%22><rect width=%22100%22 height=%2260%22 fill=%22%23f0f0f0%22/><text x=%2250%22 y=%2235%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2220%22>🍽️</text></svg>'">`
+        : `<img class="dish-img" src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 60%22><rect width=%22100%22 height=%2260%22 fill=%22%23f0f0f0%22/><text x=%2250%22 y=%2235%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2220%22>🍽️</text></svg>">`;
       const shopSafe = shop.replace(/'/g, "\\'");
       const dishSafe = item.dish.replace(/'/g, "\\'");
       html += `<div class="dish-item">
         <span class="num">${num}.</span>
         ${imgHtml}
         <span class="name">${item.dish}</span>
-        <span class="shop-name">${shop}</span>
         <span class="remove" onclick="removeDish('${shopSafe}','${dishSafe}')">✕</span>
       </div>`;
       num++;
     });
     html += '</div>';
   });
-
   content.innerHTML = html;
 }
 
@@ -132,28 +145,64 @@ function removeDish(shop, dish) {
   const idx = list.findIndex(item => item.shop === shop && item.dish === dish);
   if (idx >= 0) { list.splice(idx, 1); saveList(list); render(); }
 }
-
 function clearAll() {
-  if (confirm('确定清空研究清单吗？')) { saveList([]); render(); }
+  if (confirm('清空研究清单？')) { saveList([]); render(); }
 }
 
-function exportText() {
+function exportPDF() {
   const list = loadList();
   if (list.length === 0) { alert('清单为空'); return; }
+
+  const el = document.getElementById('loading');
+  el.style.display = 'block';
+
+  // Build the PDF HTML
   const grouped = {};
-  list.forEach(item => { if (!grouped[item.shop]) grouped[item.shop] = []; grouped[item.shop].push(item.dish); });
-  let text = '=== 仙味楼 菜品研究方向清单 ===\n\n';
-  text += `生成日期：${new Date().toLocaleDateString('zh-CN')}\n共 ${list.length} 道菜品\n\n`;
-  let i = 1;
-  Object.entries(grouped).forEach(([shop, dishes]) => {
-    text += `【${shop}】\n`;
-    dishes.forEach(dish => { text += `  ${i}. ${dish}\n`; i++; });
-    text += '\n';
+  list.forEach(item => {
+    if (!grouped[item.shop]) grouped[item.shop] = [];
+    grouped[item.shop].push(item);
   });
-  text += '---\n仙味楼 R&D 助手\n';
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => alert('✅ 已复制！')).catch(() => prompt('复制以下内容：', text));
-  } else { prompt('复制以下内容：', text); }
+
+  let pdfHtml = `
+    <div style="padding:30px;font-family:sans-serif">
+    <h1 style="color:#c0392b;border-bottom:3px solid #c0392b;padding-bottom:10px">🍜 仙味楼 · 菜品研究方向清单</h1>
+    <p style="color:#888;font-size:13px">生成日期：${new Date().toLocaleDateString('zh-CN')} · 共 ${list.length} 道菜品</p>
+    <hr style="border:none;border-top:1px solid #eee;margin:16px 0">`;
+
+  let num = 1;
+  Object.entries(grouped).forEach(([shop, dishes]) => {
+    pdfHtml += `<h2 style="font-size:16px;margin:16px 0 8px">🏪 ${shop}</h2>`;
+    dishes.forEach(item => {
+      const imgTag = item.img
+        ? `<img src="${item.img}" style="width:60px;height:40px;border-radius:4px;object-fit:cover;border:1px solid #eee">`
+        : `<span style="font-size:24px">🍽️</span>`;
+      pdfHtml += `<div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid #f0f0f0">
+        <span style="color:#999;min-width:22px">${num}.</span>
+        ${imgTag}
+        <span style="font-weight:600">${item.dish}</span>
+        <span style="color:#888;font-size:12px;margin-left:auto">${shop}</span>
+      </div>`;
+      num++;
+    });
+  });
+
+  pdfHtml += `<hr style="border:none;border-top:2px solid #c0392b;margin:20px 0 10px">
+    <p style="text-align:center;color:#999;font-size:11px">仙味楼 R&D 助手 · 数据来源：大众点评</p></div>`;
+
+  // Open in new window and print to PDF
+  const win = window.open('', '_blank');
+  if (win) {
+    win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>仙味楼 菜品研究方向清单</title></head><body>${pdfHtml}</body></html>`);
+    win.document.close();
+    setTimeout(() => {
+      win.focus();
+      win.print();
+      el.style.display = 'none';
+    }, 500);
+  } else {
+    alert('请允许弹出窗口');
+    el.style.display = 'none';
+  }
 }
 
 render();
