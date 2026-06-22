@@ -12,8 +12,8 @@ OUTPUT_DIR = '/Users/macclaw/hudadao-r-and-d-assistant/reports'
 TOTALS = {
     '江浙菜_精选': 29,
     '江浙菜_必吃榜': 24,
-    '江浙菜_排队': 60,
-    '江浙菜_老字号': 60,
+    '江浙菜_排队': 293,
+    '江浙菜_老字号': 2042,
 }
 CAP = 60
 
