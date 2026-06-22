@@ -109,7 +109,7 @@ function pdf(){
     document.getElementById('loading').style.display = 'block';
     html2pdf().set({
       margin: [10,10,10,10], filename: '仙味楼_菜品研究方向清单.pdf',
-      html2canvas: {scale:2,useCORS:true}, jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
+      html2canvas: {scale:2,useCORS:false,allowTaint:false}, jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
     }).from(el).save().then(()=>{
       document.body.removeChild(el);
       document.getElementById('loading').style.display = 'none';
